@@ -1,0 +1,32 @@
+Package: MetBEC
+Type: Package
+Title: Batch Effect Correction (BEC) with Correction Assessment in Metabolomics
+Version: 0.1.0
+Authors@R: person(given = 'Zhendong', family = 'Guo', role = c("aut", "cre"), email = "guozhendong19@mails.ucas.ac.cn")
+Description: 
+    Batch effects are inevitable in large-scale metabolomics. Prior to data analysis, BEC is imperative to prevent from obscuring biological variations.
+    Here, we provide six quality control (QC)-based BEC algorithms, including four intra-BEC methods and two inter-BEC methods, with several metrics for correction assessment.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+RoxygenNote: 7.3.2
+Depends: 
+    R (>= 4.1.0)
+Imports:
+    caret,
+    e1071,
+    expm,
+    ggplot2,
+    GLassoElnetFast,
+    igraph,
+    parallel,
+    PEtests,
+    randomForest,
+    RMTstat,
+    scales,
+    TIGERr
+Remotes:
+  TobiasRuckstuhl/GLassoElnetFast
