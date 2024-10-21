@@ -23,7 +23,8 @@
 #' @examples
 #' data(Dataset_I)
 #' data <- Dataset_I
-#' scatter(data, variable_index = 107, y.log10_trans = TRUE, y.lim = TRUE, y_min = 10^3, y_max = 10^5)
+#' scatter_plot(data, variable_index = 107, y.log10_trans = TRUE,
+#' y.lim = TRUE, y_min = 10^3, y_max = 10^5)
 
 scatter_plot <- function(data, variable_index,
                          ylab = NULL, y.log10_trans = FALSE,
