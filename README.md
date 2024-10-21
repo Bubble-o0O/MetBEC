@@ -14,9 +14,13 @@ Batch effects are inevitable in large-scale metabolomics. Prior to data analysis
   - dispersion-ratio (D-ratio)
   - **QC-based simultaneous tests (QC-ST)**
 ## Install
-Our R package depends on [GLassoElnetFast](https://github.com/TobiasRuckstuhl/GLassoElnetFast). If necessary, execute
+The R package depends on [GLassoElnetFast](https://github.com/TobiasRuckstuhl/GLassoElnetFast). If necessary, execute
 ```R
 remotes::install_github("TobiasRuckstuhl/GLassoElnetFast")
+```
+or
+```R
+remotes::install_github("Bubble-o0O/GLassoElnetFast")
 ```
 firstly. Then, execute
 ```R
@@ -24,4 +28,6 @@ remotes::install_github("Bubble-o0O/MetBEC")
 ```
 to install ***MetBEC***.
 ## Contact
-<guozhendong19@mails.ucas.ac.cn> for any questions.
+<guozhendong19@mails.ucas.ac.cn> for any questions (**preferably in Chinese**).
+## References
+A new statistical method for evaluating batch effects based on quality control samples with the matching batch effect correction strategy in metabolomics (*Submitting*).
