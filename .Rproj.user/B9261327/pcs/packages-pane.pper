@@ -1,6 +1,6 @@
 {
     "installOptions": {
-        "installFromRepository": true,
+        "installFromRepository": false,
         "libraryPath": "D:/R/R-4.3.3/library",
         "installDependencies": true
     }

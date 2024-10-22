@@ -1,6 +1,6 @@
 #' @title QC-based BEC algorithm: Covariance Correction (CoCo)
 #'
-#' @description CoCo is used for inter-BEC, which employs the GELNET (Graphical Elastic Net) algorithm of GGM (Gaussian Graphical Models).\cr
+#' @description CoCo is used for inter-BEC, which employs the GELNET (Graphical Elastic Net) algorithm of the GGM (Gaussian Graphical Model).\cr
 #' For the multivariate normal distribution \eqn{\mathrm{N}_{p}(\boldsymbol{\mu},\boldsymbol{\Sigma})}, the penalized MLE (Maximum Likelihood Estimator) of the precision matrix (inverse covariance matrix, namely \eqn{\boldsymbol{\Theta}=\boldsymbol{\Sigma}^{-1}}) by GELNET is:\cr
 #' \deqn{\hat{\boldsymbol{\Theta}} = \arg\min_{\boldsymbol{\Theta}}\{-\mathrm{log}|\boldsymbol{\Theta}| + \mathrm{tr}(\boldsymbol{S}\boldsymbol{\Theta}) + \lambda(\alpha\|\boldsymbol{\Theta}-\boldsymbol{T}\|_{1} + \frac{1-\alpha}{2}\|\boldsymbol{\Theta}-\boldsymbol{T}\|^2_{2})\},}
 #' where \eqn{\boldsymbol{S}} denotes the MLE of \eqn{\boldsymbol{\Sigma}};\cr
