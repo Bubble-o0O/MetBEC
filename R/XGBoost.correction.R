@@ -10,7 +10,7 @@
 #'
 #' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
 #' @param batch_ratio Default is \code{ratio-A} when the batch number \eqn{B>1}, otherwise default is \code{NULL} when \eqn{B=1}. Noted that if \code{batch_ratio = NULL}, only intra-BEC will be implemented.
-#' @param cor_variable_num A numeric scalar. Default is 10. The hyperparameter usually has slight influence on correction.
+#' @param cor_variable_num Default is \code{NULL}, which equals to 10 when the variable number \eqn{p>10} or else equals to \eqn{p-1}. Otherwise, it should be a numeric scalar. The hyperparameter usually has slight influence on correction.
 #' @param nrounds A numeric scalar or vector. Default is 50.
 #' @param eta A numeric scalar or vector. Default is \code{c(0.05, 0.1)}.
 #' @param gamma A numeric scalar or vector. Default is 1. The hyperparameter usually has slight influence on correction.
@@ -43,7 +43,7 @@
 #' data.XGBoost <- XGBoost.correction(data)
 
 XGBoost.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 'mean'),
-                               cor_variable_num = 10,
+                               cor_variable_num = NULL,
                                nrounds = 50, eta = c(0.05, 0.1),
                                gamma = 1, min_child_weight = 2, max_depth = 4,
                                subsample = 0.7, colsample_bytree = 0.8,
@@ -56,6 +56,17 @@ XGBoost.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 
   QC <- subset(data, data$type == 'qc')
 
   p <- ncol(data[, -1:-4]) # 变量数
+
+  if (is.null(cor_variable_num) == TRUE){
+    if (p > 10){
+      cor_variable_num <- 10
+    }else {
+      cor_variable_num <- p - 1
+    }
+  }else if (cor_variable_num < 0 || cor_variable_num > p - 1){
+    stop("'cor_variable_num' must be in [0,p-1],
+         where p denotes the variable number.")
+  }
 
   if (any(nrounds < 0) == TRUE){ # 该超参数越大，拟合效果越好（但太大将导致过拟合）
     # 经测试，该超参数对校正效果的影响较大
@@ -101,11 +112,6 @@ XGBoost.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 
                              subsample = unique(subsample), # 默认：1
                              colsample_bytree = unique(colsample_bytree)) # 默认：1
 
-  if (cor_variable_num < 0 || cor_variable_num > p - 1){
-    stop("'cor_variable_num' must be in [0,p-1],
-         where p denotes the variable number.")
-  }
-
   if (is.null(cl) == TRUE){
     cl <- parallel::makeCluster(parallel::detectCores())
   }else {
@@ -133,12 +139,15 @@ XGBoost.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 
       cor_index <- match(names(sort(correlation, decreasing = TRUE)[1:(cor_variable_num + 1)][-1]),
                          names(correlation)) # 得到与第i个变量相关性（绝对值）最强的若干个变量的索引；[-1]表示除去第i个变量自身
       QC.Data <- data.frame(y = QC_b.Data[, j], QC_b.Data[, cor_index], order = QC.order_b)
+      colnames(QC.Data) <- c('y', names(correlation)[cor_index], 'order')
 
       XGBoost_model <- caret::train(method = 'xgbTree', y ~ ., data = QC.Data, tuneGrid = grid_search,
                                     trControl = caret::trainControl(method = 'cv', number = 5)) # 交叉验证
 
       # best_para_b <- XGBoost_model$bestTune
       all.Data <- data.frame(Data_b[, cor_index], order = order_b) # 根据order排序
+      colnames(all.Data) <- c(names(correlation)[cor_index], 'order')
+
       all.correction <- Data_b[, j] / predict(XGBoost_model, all.Data) * median(QC_b.Data[, j]) # 除法校正
 
       return(all.correction)

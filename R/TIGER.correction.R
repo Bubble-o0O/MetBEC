@@ -4,7 +4,7 @@
 #'
 #' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
 #' @param batch_ratio Default is \code{ratio-A} when the batch number \eqn{B>1}, otherwise default is \code{NULL} when \eqn{B=1}. Noted that if \code{batch_ratio = NULL}, only intra-BEC will be implemented.
-#' @param cor_variable_num A numeric scalar. Default is 10. The hyperparameter usually has slight influence on correction.
+#' @param cor_variable_num Default is \code{NULL}, which equals to 10 when the variable number \eqn{p>10} or else equals to \eqn{p-1}. Otherwise, it should be a numeric scalar. The hyperparameter usually has slight influence on correction.
 #' @param mtry_percent A numeric scalar or vector. Default is \code{seq(0.2, 0.8, 0.2)}.
 #' @param nodesize_percent A numeric scalar or vector. Default is 0.2.
 #' @param ntree A numeric scalar or vector. Default is 500. The hyperparameter usually has slight influence on correction.
@@ -33,7 +33,7 @@
 #' data.TIGER <- TIGER.correction(data)
 
 TIGER.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 'mean'),
-                             cor_variable_num = 10,
+                             cor_variable_num = NULL,
                              mtry_percent = seq(0.2, 0.8, 0.2),
                              nodesize_percent = 0.2, ntree = 500,
                              cl = NULL){
@@ -42,8 +42,14 @@ TIGER.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 'm
 
   p <- ncol(data[, -1:-4]) # 变量数
 
-  if (cor_variable_num < 1 || cor_variable_num > p - 1){
-    stop("'cor_variable_num' must be in [1,p-1],
+  if (is.null(cor_variable_num) == TRUE){
+    if (p > 10){
+      cor_variable_num <- 10
+    }else {
+      cor_variable_num <- p - 1
+    }
+  }else if (cor_variable_num < 0 || cor_variable_num > p - 1){
+    stop("'cor_variable_num' must be in [0,p-1],
          where p denotes the variable number.")
   }
 

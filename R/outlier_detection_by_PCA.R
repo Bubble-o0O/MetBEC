@@ -177,6 +177,7 @@ PC_num.TW <- function(X, PCA_scale = TRUE,
 #' @note
 #' \itemize{
 #'  \item{The principle is based on the premise of the multivariate normal distribution. Hence, the function is suitable for QC samples instead of subject samples. Additionally, it should be used for QC samples batchwise instead of all the QC samples.}
+#'  \item{It is an open problem to determine the principal component number of PCA. One of the feasible methods is the Tracy-Widom distribution, which is based on the Random Matrix Theory (RMT).}
 #'  \item{Although Hotelling's \eqn{T^2} statistic strictly follows the Beta distribution, the Chi-squared distribution and the Hotelling's \eqn{T^2} distribution are still widely applied.}
 #'  \item{By default, the samples whose \code{Hotelling_T2} and \code{SPE} are both larger than the 99\% UCL, namely \code{union}, are regarded as outliers.}
 #' }

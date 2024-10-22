@@ -10,7 +10,7 @@
 #'
 #' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
 #' @param batch_ratio Default is \code{ratio-A} when the batch number \eqn{B>1}, otherwise default is \code{NULL} when \eqn{B=1}. Noted that if \code{batch_ratio = NULL}, only intra-BEC will be implemented.
-#' @param cor_variable_num A numeric scalar. Default is 10. The hyperparameter usually has slight influence on correction. Denoted as \eqn{p'}.
+#' @param cor_variable_num Default is \code{NULL}, which equals to 10 when the variable number \eqn{p>10} or else equals to \eqn{p-1}. Otherwise, it should be a numeric scalar. The hyperparameter usually has slight influence on correction. Denoted as \eqn{p'}.
 #' @param gamma Default is \code{NULL}, which is \eqn{\frac{1}{p'+1}·} \code{c(1,2,4)} for hyperparameter optimization. Otherwise, it should be a numeric scalar or vector.
 #' @param cost A numeric scalar or vector. Default is 1.
 #' @param epsilon A numeric scalar or vector. Default is 0.1. The hyperparameter usually has slight influence on correction.
@@ -40,7 +40,7 @@
 #' data.SVR <- SVR.correction(data)
 
 SVR.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 'mean'),
-                           cor_variable_num = 10,
+                           cor_variable_num = NULL,
                            gamma = NULL, cost = 1, epsilon = 0.1, # cost与epsilon均为svm函数的默认值
                            cl = NULL){
   info <- data[, 1:4]
@@ -52,7 +52,13 @@ SVR.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 'mea
 
   p <- ncol(data[, -1:-4]) # 变量数
 
-  if (cor_variable_num < 0 || cor_variable_num > p - 1){
+  if (is.null(cor_variable_num) == TRUE){
+    if (p > 10){
+      cor_variable_num <- 10
+    }else {
+      cor_variable_num <- p - 1
+    }
+  }else if (cor_variable_num < 0 || cor_variable_num > p - 1){
     stop("'cor_variable_num' must be in [0,p-1],
          where p denotes the variable number.")
   }
@@ -104,6 +110,7 @@ SVR.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 'mea
       cor_index <- match(names(sort(correlation, decreasing = TRUE)[1:(cor_variable_num + 1)][-1]),
                          names(correlation)) # 得到与第i个变量相关性（绝对值）最强的若干个变量的索引；[-1]表示除去第i个变量自身
       QC.Data <- data.frame(y = QC_b.Data[, j], QC_b.Data[, cor_index], order = QC.order_b)
+      colnames(QC.Data) <- c('y', names(correlation)[cor_index], 'order')
 
       SVR_model <- e1071::tune(e1071::svm, y ~ ., data = QC.Data, ranges = grid_search,
                                tunecontrol = e1071::tune.control(cross = 5)) # 交叉验证
@@ -112,6 +119,8 @@ SVR.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 'mea
 
       # best_para_b <- SVR_model$best.parameters
       all.Data <- data.frame(Data_b[, cor_index], order = order_b) # 根据order排序
+      colnames(all.Data) <- c(names(correlation)[cor_index], 'order')
+
       all.correction <- Data_b[, j] / predict(SVR_model$best.model, all.Data) * median(QC_b.Data[, j]) # 除法校正
 
       return(all.correction)

@@ -10,7 +10,7 @@
 #'
 #' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
 #' @param batch_ratio Default is \code{ratio-A} when the batch number \eqn{B>1}, otherwise default is \code{NULL} when \eqn{B=1}. Noted that if \code{batch_ratio = NULL}, only intra-BEC will be implemented.
-#' @param cor_variable_num A numeric scalar. Default is 10. The hyperparameter usually has slight influence on correction.
+#' @param cor_variable_num Default is \code{NULL}, which equals to 10 when the variable number \eqn{p>10} or else equals to \eqn{p-1}. Otherwise, it should be a numeric scalar. The hyperparameter usually has slight influence on correction.
 #' @param mtry Default is \code{NULL}, which calls \code{randomForest::\link{tuneRF}} to automatically obtain a numeric vector for hyperparameter optimization. Otherwise, it should be a numeric scalar.
 #' @param nodesize_percent A numeric scalar or vector. Default is 0.2.
 #' @param ntree A numeric scalar. Default is 500. The hyperparameter usually has slight influence on correction.
@@ -40,7 +40,7 @@
 #' data.RF <- RF.correction(data)
 
 RF.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 'mean'),
-                         cor_variable_num = 10,
+                         cor_variable_num = NULL,
                          mtry = NULL, nodesize_percent = 0.2, ntree = 500,
                          cl = NULL){
   info <- data[, 1:4]
@@ -52,7 +52,13 @@ RF.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 'mean
 
   p <- ncol(data[, -1:-4]) # 变量数
 
-  if (cor_variable_num < 0 || cor_variable_num > p - 1){
+  if (is.null(cor_variable_num) == TRUE){
+    if (p > 10){
+      cor_variable_num <- 10
+    }else {
+      cor_variable_num <- p - 1
+    }
+  }else if (cor_variable_num < 0 || cor_variable_num > p - 1){
     stop("'cor_variable_num' must be in [0,p-1],
          where p denotes the variable number.")
   }
@@ -102,6 +108,7 @@ RF.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 'mean
       cor_index <- match(names(sort(correlation, decreasing = TRUE)[1:(cor_variable_num + 1)][-1]),
                          names(correlation)) # 得到与第i个变量相关性（绝对值）最强的若干个变量的索引；[-1]表示除去第i个变量自身
       QC.Data <- data.frame(y = QC_b.Data[, j], QC_b.Data[, cor_index], order = QC.order_b)
+      colnames(QC.Data) <- c('y', names(correlation)[cor_index], 'order')
 
       nodesize <- sapply(1:length(nodesize_percent), function(k)
                          max(1, floor(nodesize_percent[k] * nrow(QC.Data))))
@@ -138,6 +145,8 @@ RF.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 'mean
       # 因变量是y；自变量是data中去除y的所有列；subset可以选择data的子集作为训练集
 
       all.Data <- data.frame(Data_b[, cor_index], order = order_b)
+      colnames(all.Data) <- c(names(correlation)[cor_index], 'order')
+
       all.correction <- Data_b[, j] / predict(RF_model, all.Data) * median(QC_b.Data[, j]) # 除法校正
 
       return(all.correction)

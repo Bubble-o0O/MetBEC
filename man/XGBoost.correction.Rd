@@ -7,7 +7,7 @@
 XGBoost.correction(
   data,
   batch_ratio = c(NULL, "ratio-A", "median", "mean"),
-  cor_variable_num = 10,
+  cor_variable_num = NULL,
   nrounds = 50,
   eta = c(0.05, 0.1),
   gamma = 1,
@@ -23,7 +23,7 @@ XGBoost.correction(
 
 \item{batch_ratio}{Default is \code{ratio-A} when the batch number \eqn{B>1}, otherwise default is \code{NULL} when \eqn{B=1}. Noted that if \code{batch_ratio = NULL}, only intra-BEC will be implemented.}
 
-\item{cor_variable_num}{A numeric scalar. Default is 10. The hyperparameter usually has slight influence on correction.}
+\item{cor_variable_num}{Default is \code{NULL}, which equals to 10 when the variable number \eqn{p>10} or else equals to \eqn{p-1}. Otherwise, it should be a numeric scalar. The hyperparameter usually has slight influence on correction.}
 
 \item{nrounds}{A numeric scalar or vector. Default is 50.}
 
