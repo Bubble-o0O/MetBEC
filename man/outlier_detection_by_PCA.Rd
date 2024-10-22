@@ -35,7 +35,7 @@ outlier_detection_by_PCA(
 \description{
 For outlier detection, multivariate statistical methods, such as Principal Component Analysis (PCA), are more powerful than univariate statistical methods due to the consideration for the correlations between variables.\cr
 Here, we use the Tracy-Widom distribution to determine the principal component number of PCA.\cr
-Then, we use the 95\% or 99\% upper control limit (UCL) of Hotelling's \eqn{T^2} statistic (also termed \eqn{D}-statistic) and Squared Prediction Error (SPE; also termed \eqn{Q}-statistic or DModX) to detect outliers.
+Then, we use the 95\% or 99\% upper control limit (UCL) of Hotelling's \eqn{T^2} statistic (also termed \eqn{D}-statistic) and Squared Prediction Errors (SPEs; also termed \eqn{Q}-statistic or DModX) to detect outliers.
 }
 \note{
 \itemize{
