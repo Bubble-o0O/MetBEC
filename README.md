@@ -34,7 +34,7 @@ E-mail to <guozhendong19@mails.ucas.ac.cn> for any questions (**preferably in Ch
 ## References
 - A new statistical method for evaluating batch effects based on quality control samples with the matching batch effect correction strategy in metabolomics. *Submitting*.
 ## Supplement
-安装***GLassoElnetFast***包时，可能出现报错。如报错，请参考以下解决方案：
+安装***GLassoElnetFast***包时，如报错，请参考以下解决方案：
 - 安装RBuildTools（如有必要）
 ```R
 if (require("pkgbuild", quietly = TRUE) == FALSE){
@@ -46,7 +46,7 @@ if (require("pkgbuild", quietly = TRUE) == FALSE){
 - **系统变量 - Path - 编辑**
 - **浏览 - C:\RBuildTools\4.3\mingw64\bin**
   - **RBuildTools**文件夹的地址请自行更改
+  - 地址中不建议出现中文字符
   - R与RBuildTools的版本应相同
 - **确定 - 确定 - 确定**
-
-重启R Studio，再执行上述**Install**的相关代码。
+- 重启R Studio，再执行上述**Install**的相关代码。
