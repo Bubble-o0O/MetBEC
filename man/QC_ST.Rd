@@ -20,7 +20,7 @@ QC_ST(
 
 \item{sig_level.alpha}{A numeric scalar. Default is 0.05, which is unnecessary to be tuned for most of the time.}
 
-\item{simul_method}{Default is \code{NULL}, which selects \code{fisher} when \eqn{\mathrm{mean}\{n_{1},n_{2}\} > 10} or else selects \code{HN}.\cr
+\item{simul_method}{Default is \code{NULL}, which selects \code{fisher} when \eqn{\mathrm{mean}\{n_{1},n_{2}\} \ge 10} or else selects \code{HN}.\cr
 \code{cauchy}, namely "Yu-Cauchy"; \code{fisher}, namely "Yu-Fisher".}
 
 \item{p_value.adjust}{Default is \code{fdr}, which is equivalent to \code{BH} and is unnecessary to be tuned for most of the time.}

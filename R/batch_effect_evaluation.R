@@ -57,7 +57,7 @@ simul_test <- function(X, Y,
   }
 
   if (is.null(simul_method) == TRUE){
-    if (mean(nrow(X), nrow(Y)) <= 10){
+    if (mean(nrow(X), nrow(Y)) < 10){
       HN <- HN_2018(X, Y)
 
       mean_pval <- HN$mean_pval
@@ -97,7 +97,7 @@ simul_test <- function(X, Y,
 #' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
 #' @param print_plot Logical. Default is \code{TRUE}. Determines whether to plot the heatmap and the undirected graph.
 #' @param sig_level.alpha A numeric scalar. Default is 0.05, which is unnecessary to be tuned for most of the time.
-#' @param simul_method Default is \code{NULL}, which selects \code{fisher} when \eqn{\mathrm{mean}\{n_{1},n_{2}\} > 10} or else selects \code{HN}.\cr
+#' @param simul_method Default is \code{NULL}, which selects \code{fisher} when \eqn{\mathrm{mean}\{n_{1},n_{2}\} \ge 10} or else selects \code{HN}.\cr
 #' \code{cauchy}, namely "Yu-Cauchy"; \code{fisher}, namely "Yu-Fisher".
 #' @param p_value.adjust Default is \code{fdr}, which is equivalent to \code{BH} and is unnecessary to be tuned for most of the time.
 #'
