@@ -18,9 +18,12 @@ Batch effects are inevitable in large-scale metabolomics. Prior to data analysis
 ## Install
 - The R package depends on [GLassoElnetFast](https://github.com/TobiasRuckstuhl/GLassoElnetFast). If necessary, execute
 ```R
-remotes::install_github("TobiasRuckstuhl/GLassoElnetFast")
+if (require("remotes", quietly = TRUE) == FALSE){
+  install.packages("remotes")
+}
 
-# Alternative: My version is also allowed, which has corrected some minor errors.
+remotes::install_github("TobiasRuckstuhl/GLassoElnetFast")
+## Alternative: My version is also allowed, which has corrected some minor errors.
 # remotes::install_github("Bubble-o0O/GLassoElnetFast")
 ```
 ([GLassoElnetFast](https://github.com/Bubble-o0O/GLassoElnetFast)), and `1: All` is recommended to select. 
@@ -36,10 +39,10 @@ Please read **Help** of the required function in R studio.
 ## Contact
 E-mail to <guozhendong19@mails.ucas.ac.cn> for any questions (**preferably in Chinese**).
 ## References
-- A new statistical method for evaluating batch effects based on quality control samples with the matching batch effect correction strategy in metabolomics. *Submitting*.
+- A New Statistical Method for Evaluating Batch Effects Based on Quality Control Samples with the Matching Batch Effect Correction Strategy in Metabolomics. *Submitting*.
 ## Supplements
 执行**Install**时如报错，请参考以下解决方案：
-- 安装RBuildTools（若已安装，即跳过）
+- 如有必要，安装RBuildTools（[pkgbuild](https://cran.r-project.org/web/packages/pkgbuild/index.html)）
 ```R
 if (require("pkgbuild", quietly = TRUE) == FALSE){
   install.packages("pkgbuild")
