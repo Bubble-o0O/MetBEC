@@ -38,8 +38,8 @@ E-mail to <guozhendong19@mails.ucas.ac.cn> for any questions (**preferably in Ch
 ## References
 - A new statistical method for evaluating batch effects based on quality control samples with the matching batch effect correction strategy in metabolomics. *Submitting*.
 ## Supplements
-安装时如报错，请参考以下解决方案：
-- 如有必要，安装RBuildTools
+执行**Install**时如报错，请参考以下解决方案：
+- 安装RBuildTools（若已安装，即跳过）
 ```R
 if (require("pkgbuild", quietly = TRUE) == FALSE){
   install.packages("pkgbuild")
@@ -53,4 +53,4 @@ if (require("pkgbuild", quietly = TRUE) == FALSE){
   - 地址中不建议出现中文字符
   - R与RBuildTools的版本应相同
 - **确定 - 确定 - 确定**
-- 重启R Studio，再执行**Install**的相关代码。
+- 重启R Studio，再执行**Install**的相关代码
