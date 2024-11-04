@@ -17,7 +17,7 @@
 #' @author Zhendong Guo (\email{guozhendong19@mails.ucas.ac.cn}).
 #' @references
 #' \itemize{
-#'  \item{van der Kloet, F.; Bobeldijk, I.; Verheij, E.; Jellema, R. Analytical Error Reduction Using Single Point Calibration for Accurate and Precise Metabolomic Phenotyping. \emph{JOURNAL OF PROTEOME RESEARCH} \strong{2009}, 8, 5132-5141. DOI: 10.1021/pr900499r.}
+#'  \item{van der Kloet, F.; Bobeldijk, I.; Verheij, E.; Jellema, R. Analytical Error Reduction Using Single Point Calibration for Accurate and Precise Metabolomic Phenotyping. \emph{Journal of Proteome Research} \strong{2009}, 8, 5132-5141. DOI: 10.1021/pr900499r.}
 #'  \item{Kamleh, M. A.; Ebbels, T. M. D.; Spagou, K.; Masson, P.; Want, E. J. Optimizing the Use of Quality Control Samples for Signal Drift Correction in Large-Scale Urine Metabolic Profiling Studies. \emph{Analytical Chemistry} \strong{2012}, 84 (6), 2670-2677. DOI: 10.1021/ac202733q.}
 #'  \item{Wang, S.-Y.; Kuo, C.-H.; Tseng, Y. J. Batch Normalizer: A Fast Total Abundance Regression Calibration Method to Simultaneously Adjust Batch and Injection Order Effects in Liquid Chromatography/Time-of-Flight Mass Spectrometry-Based Metabolomics Data and Comparison with Current Calibration Methods. \emph{Analytical Chemistry} \strong{2012}, 85 (2), 1037-1046. DOI: 10.1021/ac302877x.}
 #' }

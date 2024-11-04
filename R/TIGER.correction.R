@@ -24,7 +24,7 @@
 #' @author Zhendong Guo (\email{guozhendong19@mails.ucas.ac.cn}).
 #' @references
 #' \itemize{
-#'  \item{Han, S.; Huang, J.; Foppiano, F.; Prehn, C.; Adamski, J.; Suhre, K.; Li, Y.; Matullo, G.; Schliess, F.; Gieger, C.; et al. TIGER: technical variation elimination for metabolomics data using ensemble learning architecture. \emph{Brief Bioinform} \strong{2022}, 23 (2). DOI: 10.1093/bib/bbab535.}
+#'  \item{Han, S.; Huang, J.; Foppiano, F.; Prehn, C.; Adamski, J.; Suhre, K.; Li, Y.; Matullo, G.; Schliess, F.; Gieger, C.; et al. TIGER: technical variation elimination for metabolomics data using ensemble learning architecture. \emph{Briefings in Bioinformatics} \strong{2022}, 23 (2). DOI: 10.1093/bib/bbab535.}
 #' }
 #' @seealso \code{\link{batch_ratio.correction}}, \code{TIGERr::\link[TIGERr]{run_TIGER}}, \code{randomForest::\link[randomForest]{randomForest}}.
 #' @examples

@@ -31,7 +31,7 @@
 #' \itemize{
 #'  \item{Kuligowski, J.; Sanchez-Illana, A.; Sanjuan-Herraez, D.; Vento, M.; Quintas, G. Intra-batch effect correction in liquid chromatography-mass spectrometry using quality control samples and support vector regression (QC-SVRC). \emph{Analyst} \strong{2015}, 140 (22), 7810-7817. DOI: 10.1039/c5an01638j.}
 #'  \item{Shen, X.; Gong, X.; Cai, Y.; Guo, Y.; Tu, J.; Li, H.; Zhang, T.; Wang, J.; Xue, F.; Zhu, Z.-J. Normalization and integration of large-scale metabolomics data using support vector regression. \emph{Metabolomics} \strong{2016}, 12 (5). DOI: 10.1007/s11306-016-1026-5.}
-#'  \item{Ding, X.; Yang, F.; Chen, Y.; Xu, J.; He, J.; Zhang, R.; Abliz, Z. Norm ISWSVR: A Data Integration and Normalization Approach for Large-Scale Metabolomics. \emph{Anal Chem} \strong{2022}, 94 (21), 7500-7509. DOI: 10.1021/acs.analchem.1c05502.}
+#'  \item{Ding, X.; Yang, F.; Chen, Y.; Xu, J.; He, J.; Zhang, R.; Abliz, Z. Norm ISWSVR: A Data Integration and Normalization Approach for Large-Scale Metabolomics. \emph{Analytical Chemistry} \strong{2022}, 94 (21), 7500-7509. DOI: 10.1021/acs.analchem.1c05502.}
 #' }
 #' @seealso \code{\link{batch_ratio.correction}}, \code{e1071::\link[e1071]{tune}}, \code{e1071::\link[e1071]{svm}}.
 #' @examples

@@ -16,7 +16,7 @@
 #' @param gamma A numeric scalar or vector. Default is 1. The hyperparameter usually has slight influence on correction.
 #' @param min_child_weight A numeric scalar or vector. Default is 2.
 #' @param max_depth A numeric scalar or vector. Default is 4. The hyperparameter is similar to \code{nodesize} or \code{maxnodes} in \code{randomForest::\link{randomForest}}.
-#' @param subsample A numeric scalar or vector. Default is 0.7. The hyperparameter is similar to bagging in \code{randomForest::\link{randomForest}}.
+#' @param subsample A numeric scalar or vector. Default is 0.7. The hyperparameter is applied without replacement, contrary to bagging (\code{replace = TRUE}) in \code{randomForest::\link{randomForest}}.
 #' @param colsample_bytree A numeric scalar or vector. Default is 0.8. The hyperparameter is similar to \code{mtry} in \code{randomForest::\link{randomForest}}.
 #' @param cl Default is \code{NULL}, which uses all the CPU cores for parallel computing. Otherwise, it should be a numeric scalar.
 #'
@@ -34,7 +34,8 @@
 #' @author Zhendong Guo (\email{guozhendong19@mails.ucas.ac.cn}).
 #' @references
 #' \itemize{
-#'  \item{Chen, T.; Guestrin, C.; Machinery, A. C. XGBoost: A Scalable Tree Boosting System. In \emph{KDD'16: PROCEEDINGS OF THE 22ND ACM SIGKDD INTERNATIONAL CONFERENCE ON KNOWLEDGE DISCOVERY AND DATA MINING}, 2016-01-01, \strong{2016}; pp 785-794. DOI: 10.1145/2939672.2939785.}
+#'  \item{Chen, T.; Guestrin, C.; Machinery, A. C. XGBoost: A Scalable Tree Boosting System. In \emph{KDD'16: Proceedings of the 22Nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}, 2016; pp 785-794. DOI: 10.1145/2939672.2939785.}
+#'  \item{Bentéjac, C.; Csrg, A.; Martínez-Muoz, G. A Comparative Analysis of XGBoost. \emph{Arxiv} \strong{2019}. DOI: arXiv:1911.01914.}
 #' }
 #' @seealso \code{\link{batch_ratio.correction}}, \code{caret::\link[caret]{train}}, \code{xgboost::xgboost}.
 #' @examples
@@ -94,7 +95,7 @@ XGBoost.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 
   }
 
   if (any(subsample <= 0) == TRUE || any(subsample > 1) == TRUE){
-    # 该超参数类似于随机森林的bagging，每棵树只纳入部分样本
+    # 该超参数执行不放回抽样，这不同于随机森林的bagging
     stop("'subsample' must be in (0,1].")
   }
 

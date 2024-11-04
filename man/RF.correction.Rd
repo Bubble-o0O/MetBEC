@@ -54,7 +54,7 @@ data.RF <- RF.correction(data)
 }
 \references{
 \itemize{
- \item{Luan, H.; Ji, F.; Chen, Y.; Cai, Z. statTarget: A streamlined tool for signal drift correction and interpretations of quantitative mass spectrometry-based omics data. \emph{Anal Chim Acta} \strong{2018}, 1036, 66-72. DOI: 10.1016/j.aca.2018.08.002.}
+ \item{Luan, H.; Ji, F.; Chen, Y.; Cai, Z. statTarget: A streamlined tool for signal drift correction and interpretations of quantitative mass spectrometry-based omics data. \emph{Analytica Chimica Acta} \strong{2018}, 1036, 66-72. DOI: 10.1016/j.aca.2018.08.002.}
  \item{Fan, S.; Kind, T.; Cajka, T.; Hazen, S. L.; Tang, W. H. W.; Kaddurah-Daouk, R.; Irvin, M. R.; Arnett, D. K.; Barupal, D. K.; Fiehn, O. Systematic Error Removal Using Random Forest for Normalizing Large-Scale Untargeted Lipidomics Data. \emph{Analytical Chemistry} \strong{2019}, 91 (5), 3590-3596. DOI: 10.1021/acs.analchem.8b05592.}
 }
 }

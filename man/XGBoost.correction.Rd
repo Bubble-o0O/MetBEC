@@ -35,7 +35,7 @@ XGBoost.correction(
 
 \item{max_depth}{A numeric scalar or vector. Default is 4. The hyperparameter is similar to \code{nodesize} or \code{maxnodes} in \code{randomForest::\link{randomForest}}.}
 
-\item{subsample}{A numeric scalar or vector. Default is 0.7. The hyperparameter is similar to bagging in \code{randomForest::\link{randomForest}}.}
+\item{subsample}{A numeric scalar or vector. Default is 0.7. The hyperparameter is applied without replacement, contrary to bagging (\code{replace = TRUE}) in \code{randomForest::\link{randomForest}}.}
 
 \item{colsample_bytree}{A numeric scalar or vector. Default is 0.8. The hyperparameter is similar to \code{mtry} in \code{randomForest::\link{randomForest}}.}
 
@@ -67,7 +67,8 @@ data.XGBoost <- XGBoost.correction(data)
 }
 \references{
 \itemize{
- \item{Chen, T.; Guestrin, C.; Machinery, A. C. XGBoost: A Scalable Tree Boosting System. In \emph{KDD'16: PROCEEDINGS OF THE 22ND ACM SIGKDD INTERNATIONAL CONFERENCE ON KNOWLEDGE DISCOVERY AND DATA MINING}, 2016-01-01, \strong{2016}; pp 785-794. DOI: 10.1145/2939672.2939785.}
+ \item{Chen, T.; Guestrin, C.; Machinery, A. C. XGBoost: A Scalable Tree Boosting System. In \emph{KDD'16: Proceedings of the 22Nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}, 2016; pp 785-794. DOI: 10.1145/2939672.2939785.}
+ \item{Bentéjac, C.; Csrg, A.; Martínez-Muoz, G. A Comparative Analysis of XGBoost. \emph{Arxiv} \strong{2019}. DOI: arXiv:1911.01914.}
 }
 }
 \seealso{

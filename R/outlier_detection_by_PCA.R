@@ -184,9 +184,9 @@ PC_num.TW <- function(X, PCA_scale = TRUE,
 #' @author Zhendong Guo (\email{guozhendong19@mails.ucas.ac.cn}).
 #' @references
 #' \itemize{
-#'  \item{Wikstrom, C.; Albano, C.; Eriksson, L.; Friden, H.; Johansson, E.; Nordahl, A.; Rannar, S.; Sandberg, M.; Kettaneh-Wold, N.; Wold, S. Multivariate process and quality monitoring applied to an electrolysis process Part I. Process supervision with multivariate control charts. \emph{CHEMOMETRICS AND INTELLIGENT LABORATORY SYSTEMS} \strong{1998}, 42, 221-231.}
+#'  \item{Wikstrom, C.; Albano, C.; Eriksson, L.; Friden, H.; Johansson, E.; Nordahl, A.; Rannar, S.; Sandberg, M.; Kettaneh-Wold, N.; Wold, S. Multivariate process and quality monitoring applied to an electrolysis process Part I. Process supervision with multivariate control charts. \emph{Chemometrics and Intelligent Laboratory Systems} \strong{1998}, 42, 221-231.}
 #'  \item{Saccenti, E.; Camacho, J. Determining the number of components in principal components analysis: A comparison of statistical, crossvalidation and approximated methods. \emph{Chemometrics and Intelligent Laboratory Systems} \strong{2015}, 149, 99-116. DOI: 10.1016/j.chemolab.2015.10.006.}
-#'  \item{Blaise, B. J.; Correia, G. D. S.; Haggart, G. A.; Surowiec, I.; Sands, C.; Lewis, M. R.; Pearce, J. T. M.; Trygg, J.; Nicholson, J. K.; Holmes, E.; et al. Statistical analysis in metabolic phenotyping. \emph{Nat Protoc} \strong{2021}, 16 (9), 4299-4326. DOI: 10.1038/s41596-021-00579-1.}
+#'  \item{Blaise, B. J.; Correia, G. D. S.; Haggart, G. A.; Surowiec, I.; Sands, C.; Lewis, M. R.; Pearce, J. T. M.; Trygg, J.; Nicholson, J. K.; Holmes, E.; et al. Statistical analysis in metabolic phenotyping. \emph{Nature Protocols} \strong{2021}, 16 (9), 4299-4326. DOI: 10.1038/s41596-021-00579-1.}
 #' }
 #' @seealso \code{\link{PCA_plot}}, \code{stats::\link[stats]{prcomp}}.
 #' @examples

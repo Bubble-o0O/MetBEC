@@ -49,7 +49,7 @@ data.TIGER <- TIGER.correction(data)
 }
 \references{
 \itemize{
- \item{Han, S.; Huang, J.; Foppiano, F.; Prehn, C.; Adamski, J.; Suhre, K.; Li, Y.; Matullo, G.; Schliess, F.; Gieger, C.; et al. TIGER: technical variation elimination for metabolomics data using ensemble learning architecture. \emph{Brief Bioinform} \strong{2022}, 23 (2). DOI: 10.1093/bib/bbab535.}
+ \item{Han, S.; Huang, J.; Foppiano, F.; Prehn, C.; Adamski, J.; Suhre, K.; Li, Y.; Matullo, G.; Schliess, F.; Gieger, C.; et al. TIGER: technical variation elimination for metabolomics data using ensemble learning architecture. \emph{Briefings in Bioinformatics} \strong{2022}, 23 (2). DOI: 10.1093/bib/bbab535.}
 }
 }
 \seealso{

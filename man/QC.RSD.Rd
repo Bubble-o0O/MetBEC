@@ -40,7 +40,7 @@ QC.RSD(data)
 \references{
 \itemize{
  \item{Broadhurst, D.; Goodacre, R.; Reinke, S. N.; Kuligowski, J.; Wilson, I. D.; Lewis, M. R.; Dunn, W. B. Guidelines and considerations for the use of system suitability and quality control samples in mass spectrometry assays applied in untargeted clinical metabolomic studies. \emph{Metabolomics} \strong{2018}, 14 (6), 72. DOI: 10.1007/s11306-018-1367-3.}
- \item{Dudzik, D.; Barbas-Bernardos, C.; Garcia, A.; Barbas, C. Quality assurance procedures for mass spectrometry untargeted metabolomics. a review. \emph{J Pharm Biomed Anal} \strong{2018}, 147, 149-173. DOI: 10.1016/j.jpba.2017.07.044.}
+ \item{Dudzik, D.; Barbas-Bernardos, C.; Garcia, A.; Barbas, C. Quality assurance procedures for mass spectrometry untargeted metabolomics. a review. \emph{Journal of Pharmaceutical and Biomedical Analysis} \strong{2018}, 147, 149-173. DOI: 10.1016/j.jpba.2017.07.044.}
  \item{Han, W.; Li, L. Evaluating and minimizing batch effects in metabolomics. \emph{Mass Spectrometry Reviews} \strong{2020}, 41 (3), 421-442. DOI: 10.1002/mas.21672.}
  \item{Martens, A.; Holle, J.; Mollenhauer, B.; Wegner, A.; Kirwan, J.; Hiller, K. Instrumental Drift in Untargeted Metabolomics: Optimizing Data Quality with Intrastudy QC Samples. \emph{Metabolites} \strong{2023}, 13 (5). DOI: 10.3390/metabo13050665.}
 }
