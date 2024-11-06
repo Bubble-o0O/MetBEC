@@ -1,11 +1,12 @@
-#' @title RSD distribution of data
+#' @title Relative Standard Deviation (RSD) distribution
 #'
-#' @description Relative Standard Deviation (RSD). The metric only examines QC samples, whose formula is:\cr
+#' @description The metric only examines QC samples, whose formula is:\cr
 #' \deqn{\mathrm{RSD}_{i}=\frac{\sqrt{\mathrm{Var}(y^{\mathrm{(QC)}}_{i})}}{\mathrm{mean}(y^{\mathrm{(QC)}}_{i})},i=1,2,...,p,}\cr
 #' where \eqn{y^{\mathrm{(QC)}}_{i}} denotes the intensity of QC samples' \eqn{i}th metabolite;\cr
 #' \eqn{p} denotes the variable (metabolite) number.
 #'
-#' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
+#' @param data A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
 #' @param print_plot Logical. Default is \code{TRUE}. Determines whether to plot the histogram and the cumulative distribution plot.
 #' @param RSD_value Logical. Default is \code{FALSE}. Determines whether to output the RSD values.
 #'
@@ -102,16 +103,17 @@ QC.RSD <- function(data, print_plot = TRUE, RSD_value = FALSE){
   }
 }
 
-#' @title RSD distribution of different corrected data for comparison
+#' @title Relative Standard Deviation (RSD) distribution of different data for comparison
 #'
-#' @description Relative Standard Deviation (RSD). The metric only examines QC samples, whose formula is:\cr
+#' @description The metric only examines QC samples, whose formula is:\cr
 #' \deqn{\mathrm{RSD}_{i}=\frac{\sqrt{\mathrm{Var}(y^{\mathrm{(QC)}}_{i})}}{\mathrm{mean}(y^{\mathrm{(QC)}}_{i})},i=1,2,...,p,}\cr
 #' where \eqn{y^{\mathrm{(QC)}}_{i}} denotes the intensity of QC samples' \eqn{i}th metabolite;\cr
 #' \eqn{p} denotes the variable (metabolite) number.
 #'
-#' @param data1 A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
-#' @param ... Alternatives. For example, \code{data2, data3}.
-#' @param BEC_method A character vector. The length must be the same as \code{c(data1, ...)}. For example, \code{c('raw', 'RF', 'XGBoost')}.
+#' @param data1 A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
+#' @param ... Alternatives. More data (e.g., \code{data2}, \code{data3}) can be input.
+#' @param BEC_method A character vector. The length must be the same as \code{c(data1, ...)}. For example, \code{c("raw", "RF", "XGBoost")}.
 #' @param line_alpha A numeric scalar. Default is 0.8. Determines the curve line opacity in the cumulative distribution plot.
 #'
 #' @return A cumulative distribution plot.
@@ -137,7 +139,7 @@ QC.RSD <- function(data, print_plot = TRUE, RSD_value = FALSE){
 #' data(Dataset_I)
 #' data <- Dataset_I
 #' data.RF <- RF.correction(data)
-#' compare_QC.RSD(data, data.RF, BEC_method = c('raw', 'RF'))
+#' compare_QC.RSD(data, data.RF, BEC_method = c("raw", "RF"))
 
 compare_QC.RSD <- function(data1, ..., BEC_method, line_alpha = 0.8){
   data <- list(data1, ...)

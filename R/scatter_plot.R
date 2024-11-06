@@ -1,8 +1,9 @@
-#' @title Scatter plot of data
+#' @title Scatter plot
 #'
-#' @description A scatter plot of \code{data}.
+#' @description A scatter plot for univariate visualization.
 #'
-#' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
+#' @param data A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
 #' @param variable_index A numeric scalar.
 #' @param ylab Default is \code{NULL}, which denotes the variable index. Otherwise, the variable name can be input.
 #' @param y.log10_trans Logical. Default is \code{FALSE}.
@@ -24,7 +25,7 @@
 #' data(Dataset_I)
 #' data <- Dataset_I
 #' scatter_plot(data, variable_index = 107, y.log10_trans = TRUE,
-#' y.lim = TRUE, y_min = 10^3, y_max = 10^5)
+#'              y.lim = TRUE, y_min = 10^3, y_max = 10^5)
 
 scatter_plot <- function(data, variable_index,
                          ylab = NULL, y.log10_trans = FALSE,
@@ -80,13 +81,14 @@ scatter_plot <- function(data, variable_index,
   print(scatter_plot)
 }
 
-#' @title Scatter plot of different corrected data for comparison
+#' @title Scatter plot of different data for comparison
 #'
-#' @description A scatter plot of \code{c(data1, ...)}.
+#' @description A scatter plot for univariate visualization.
 #'
-#' @param data1 A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
-#' @param ... Alternatives. For example, \code{data2, data3}.
-#' @param BEC_method A character vector. The length must be the same as \code{c(data1, ...)}. For example, \code{c('raw', 'RF', 'XGBoost')}.
+#' @param data1 A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
+#' @param ... Alternatives. More data (e.g., \code{data2}, \code{data3}) can be input.
+#' @param BEC_method A character vector. The length must be the same as \code{c(data1, ...)}. For example, \code{c("raw", "RF", "XGBoost")}.
 #' @param variable_index A numeric scalar.
 #' @param sample_type \code{qc} denotes QC samples; \code{sample} denotes subject samples.
 #' @param ylab Default is \code{NULL}, which denotes the variable index. Otherwise, the variable name can be input.
@@ -109,9 +111,9 @@ scatter_plot <- function(data, variable_index,
 #' data(Dataset_I)
 #' data <- Dataset_I
 #' data.RF <- RF.correction(data)
-#' compare_scatter_plot(data, data.RF, BEC_method = c('raw', 'RF'),
-#' variable_index = 107, sample_type = 'qc',
-#' y.log10_trans = TRUE, y.lim = TRUE, y_min = 10^3, y_max = 10^5)
+#' compare_scatter_plot(data, data.RF, BEC_method = c("raw", "RF"),
+#'                      variable_index = 107, sample_type = "qc",
+#'                      y.log10_trans = TRUE, y.lim = TRUE, y_min = 10^3, y_max = 10^5)
 
 compare_scatter_plot <- function(data1, ...,
                                  BEC_method, variable_index,

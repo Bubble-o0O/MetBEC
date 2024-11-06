@@ -92,9 +92,15 @@ simul_test <- function(X, Y,
 #' @description The metric only examines QC samples.\cr
 #' Considering the homogeneity of all the QC samples, we assume that if without batch effects, QC samples across different batches should follow the same multivariate normal distribution.\cr
 #' QC-ST employs the simultaneous test of high-dimensional mean vectors and covariance matrices, which can be applied to the QC samples across different batches.\cr
-#' We have verified that QC-ST is competent for batch effect evaluation and correction assessment in metabolomics.
+#' The null hypothesis of each test is:\cr
+#' \deqn{\boldsymbol{\mu}_{j_1}=\boldsymbol{\mu}_{j_2},\boldsymbol{\Sigma}_{j_1}=\boldsymbol{\Sigma}_{j_2},}
+#' \deqn{1\le j_1<j_2\le B,}
+#' where \eqn{\boldsymbol{\mu}} denotes the mean vector;\cr
+#' \eqn{\boldsymbol{\Sigma}} denotes the covariance matrix;\cr
+#' \eqn{B} denotes the batch number.
 #'
-#' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
+#' @param data A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
 #' @param print_plot Logical. Default is \code{TRUE}. Determines whether to plot the heatmap and the undirected graph.
 #' @param sig_level.alpha A numeric scalar. Default is 0.05, which is unnecessary to be tuned for most of the time.
 #' @param simul_method Default is \code{NULL}, which selects \code{fisher} when \eqn{\mathrm{mean}\{n_{1},n_{2}\} \ge 10} or else selects \code{HN}.\cr
@@ -114,6 +120,8 @@ simul_test <- function(X, Y,
 #' @import stats PEtests
 #' @importFrom igraph graph_from_adjacency_matrix
 #'
+#' @details See our paper for details.
+#'
 #' @note
 #' \itemize{
 #'  \item{We recommend that the QC sample size of each batch should not be less than 10 to ensure high statistical powers.}
@@ -132,7 +140,7 @@ simul_test <- function(X, Y,
 #'  \item{Miao, R.; Xu, K. Joint test for homogeneity of high-dimensional means and covariance matrices using maximum-type statistics. \emph{Communications in Statistics - Simulation and Computation} \strong{2022}, 53 (2), 972-992. DOI: 10.1080/03610918.2022.2037641.}
 #'  \item{Yu, X.; Li, D.; Xue, L.; Li, R. Power-Enhanced Simultaneous Test of High-Dimensional Mean Vectors and Covariance Matrices with Application to Gene-Set Testing. \emph{Journal of the American Statistical Association} \strong{2022}, 118 (544), 2548-2561. DOI: 10.1080/01621459.2022.2061354.}
 #' }
-#' @seealso \code{PEtests::\link[PEtests]{meantest.cq}}, \code{PEtests::\link[PEtests]{covtest.lc}}, \code{PEtests::\link[PEtests]{simultest}}.
+#' @seealso \code{PEtests::\link[PEtests]{meantest.cq}}, \code{PEtests::\link[PEtests]{covtest.lc}}, \code{PEtests::\link[PEtests]{simultest}}, \code{stats::\link[stats]{p.adjust}}.
 #' @examples
 #' data(Dataset_I)
 #' data <- Dataset_I

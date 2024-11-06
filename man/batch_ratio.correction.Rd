@@ -7,7 +7,8 @@
 batch_ratio.correction(data, method = c("ratio-A", "median", "mean"))
 }
 \arguments{
-\item{data}{A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}}
+\item{data}{A dataframe.\cr
+Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.}
 
 \item{method}{Default is \code{ratio-A}, which combines median values and mean values, and is unnecessary to be tuned for most of the time.}
 }
@@ -19,7 +20,7 @@ Batch-ratio is used for inter-BEC, which has several versions. Here, we provide 
 }
 \note{
 \itemize{
- \item{When \code{method = ratio-A} or \code{mean}, batch-ratio can ensure the consistency among QC samples' mean vectors across different batches after correction.}
+ \item{If \code{method = ratio-A} or \code{mean}, it can ensure the consistency among QC samples' mean vectors across different batches after correction.}
 }
 }
 \examples{

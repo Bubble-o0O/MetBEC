@@ -2,7 +2,7 @@
 % Please edit documentation in R/scatter_plot.R
 \name{compare_scatter_plot}
 \alias{compare_scatter_plot}
-\title{Scatter plot of different corrected data for comparison}
+\title{Scatter plot of different data for comparison}
 \usage{
 compare_scatter_plot(
   data1,
@@ -20,11 +20,12 @@ compare_scatter_plot(
 )
 }
 \arguments{
-\item{data1}{A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}}
+\item{data1}{A dataframe.\cr
+Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.}
 
-\item{...}{Alternatives. For example, \code{data2, data3}.}
+\item{...}{Alternatives. More data (e.g., \code{data2}, \code{data3}) can be input.}
 
-\item{BEC_method}{A character vector. The length must be the same as \code{c(data1, ...)}. For example, \code{c('raw', 'RF', 'XGBoost')}.}
+\item{BEC_method}{A character vector. The length must be the same as \code{c(data1, ...)}. For example, \code{c("raw", "RF", "XGBoost")}.}
 
 \item{variable_index}{A numeric scalar.}
 
@@ -48,15 +49,15 @@ compare_scatter_plot(
 A scatter plot.
 }
 \description{
-A scatter plot of \code{c(data1, ...)}.
+A scatter plot for univariate visualization.
 }
 \examples{
 data(Dataset_I)
 data <- Dataset_I
 data.RF <- RF.correction(data)
-compare_scatter_plot(data, data.RF, BEC_method = c('raw', 'RF'),
-variable_index = 107, sample_type = 'qc',
-y.log10_trans = TRUE, y.lim = TRUE, y_min = 10^3, y_max = 10^5)
+compare_scatter_plot(data, data.RF, BEC_method = c("raw", "RF"),
+                     variable_index = 107, sample_type = "qc",
+                     y.log10_trans = TRUE, y.lim = TRUE, y_min = 10^3, y_max = 10^5)
 }
 \seealso{
 \code{\link{scatter_plot}}.

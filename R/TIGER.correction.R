@@ -2,9 +2,10 @@
 #'
 #' @description Briefly, the intra-BEC principle is divided into two parts based on QC samples batchwise: the base model and the meta model. The former employs Random Forest (RF) to establish the regression model similar to \code{\link{SVR.correction}}, \code{\link{RF.correction}}, and \code{\link{XGBoost.correction}}, and the latter integrates several base models with different hyperparameters weighted by the loss function.
 #'
-#' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
-#' @param batch_ratio Default is \code{ratio-A} when the batch number \eqn{B>1}, otherwise default is \code{NULL} when \eqn{B=1}. Noted that if \code{batch_ratio = NULL}, only intra-BEC will be implemented.
-#' @param cor_variable_num Default is \code{NULL}, which equals to 10 when the variable number \eqn{p>10} or else equals to \eqn{p-1}. Otherwise, it should be a numeric scalar. The hyperparameter usually has slight influence on correction.
+#' @param data A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
+#' @param batch_ratio Default is \code{ratio-A} when the batch number \eqn{B>1}, or else is \code{NULL} when \eqn{B=1}.
+#' @param cor_variable_num Default is \code{NULL}, which equals 10 when the variable number \eqn{p>10} or else equals \eqn{p-1}. Otherwise, it should be a numeric scalar. The hyperparameter usually has slight influence on correction.
 #' @param mtry_percent A numeric scalar or vector. Default is \code{seq(0.2, 0.8, 0.2)}.
 #' @param nodesize_percent A numeric scalar or vector. Default is 0.2.
 #' @param ntree A numeric scalar or vector. Default is 500. The hyperparameter usually has slight influence on correction.
@@ -17,9 +18,9 @@
 #'
 #' @note
 #' \itemize{
-#'  \item{TIGER has a more complex correction principle than \code{\link{SVR.correction}}, \code{\link{RF.correction}}, and \code{\link{XGBoost.correction}} (see the reference below for details).}
-#'  \item{5-fold-cross-validation (CV) is used for hyperparameter optimization.}
-#'  \item{When \code{batch_ratio = ratio-A} or \code{mean}, batch-ratio can ensure the consistency among QC samples' mean vectors across different batches after correction.}
+#'  \item{TIGER has a more complex correction principle than \code{\link{SVR.correction}}, \code{\link{RF.correction}}, and \code{\link{XGBoost.correction}} (see \strong{References} for details).}
+#'  \item{5-fold-cross-validation is used for hyperparameter optimization.}
+#'  \item{If \code{batch_ratio = NULL}, only intra-BEC will be implemented. If \code{batch_ratio = ratio-A} or \code{mean}, it can ensure the consistency among QC samples' mean vectors across different batches after correction.}
 #' }
 #' @author Zhendong Guo (\email{guozhendong19@mails.ucas.ac.cn}).
 #' @references

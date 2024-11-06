@@ -2,12 +2,13 @@
 % Please edit documentation in R/QC.RSD.R
 \name{QC.RSD}
 \alias{QC.RSD}
-\title{RSD distribution of data}
+\title{Relative Standard Deviation (RSD) distribution}
 \usage{
 QC.RSD(data, print_plot = TRUE, RSD_value = FALSE)
 }
 \arguments{
-\item{data}{A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}}
+\item{data}{A dataframe.\cr
+Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.}
 
 \item{print_plot}{Logical. Default is \code{TRUE}. Determines whether to plot the histogram and the cumulative distribution plot.}
 
@@ -22,7 +23,7 @@ QC.RSD(data, print_plot = TRUE, RSD_value = FALSE)
 \item{cumulative distribution plot}{Plotted only when \code{print_plot = TRUE}.}
 }
 \description{
-Relative Standard Deviation (RSD). The metric only examines QC samples, whose formula is:\cr
+The metric only examines QC samples, whose formula is:\cr
 \deqn{\mathrm{RSD}_{i}=\frac{\sqrt{\mathrm{Var}(y^{\mathrm{(QC)}}_{i})}}{\mathrm{mean}(y^{\mathrm{(QC)}}_{i})},i=1,2,...,p,}\cr
 where \eqn{y^{\mathrm{(QC)}}_{i}} denotes the intensity of QC samples' \eqn{i}th metabolite;\cr
 \eqn{p} denotes the variable (metabolite) number.

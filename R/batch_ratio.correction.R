@@ -2,7 +2,8 @@
 #'
 #' @description Batch-ratio is used for inter-BEC, which has several versions. Here, we provide three versions and recommend to use \code{ratio-A}.
 #'
-#' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
+#' @param data A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
 #' @param method Default is \code{ratio-A}, which combines median values and mean values, and is unnecessary to be tuned for most of the time.
 #'
 #' @return A dataframe. The corrected data, whose format is the same as \code{data}.
@@ -12,7 +13,7 @@
 #'
 #' @note
 #' \itemize{
-#'  \item{When \code{method = ratio-A} or \code{mean}, batch-ratio can ensure the consistency among QC samples' mean vectors across different batches after correction.}
+#'  \item{If \code{method = ratio-A} or \code{mean}, it can ensure the consistency among QC samples' mean vectors across different batches after correction.}
 #' }
 #' @author Zhendong Guo (\email{guozhendong19@mails.ucas.ac.cn}).
 #' @references

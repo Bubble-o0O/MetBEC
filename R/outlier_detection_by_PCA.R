@@ -155,10 +155,11 @@ PC_num.TW <- function(X, PCA_scale = TRUE,
 #' Here, we use the Tracy-Widom distribution to determine the principal component number of PCA.\cr
 #' Then, we use the 95\% or 99\% upper control limit (UCL) of Hotelling's \eqn{T^2} statistic (also termed \eqn{D}-statistic) and Squared Prediction Errors (SPEs; also termed \eqn{Q}-statistic or DModX) to detect outliers.
 #'
-#' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
+#' @param data A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
 #' @param title Default is \code{NULL}. Otherwise, the batch name can be input.
 #' @param PCA_scale Logical. Default is \code{TRUE}, which determines whether to autoscale (standardize) \code{data} and is unnecessary to be tuned for most of the time.
-#' @param T2.distribution Default is \code{chisq}. Hotelling's \eqn{T^2} statistic follows four kinds of distribution in different fileds, whose strictness ranking (contrary to the size of the confidence ellipse) is:\cr
+#' @param T2.distribution Default is \code{chisq}. Hotelling's \eqn{T^2} statistic follows four kinds of distribution in different fields, whose strictness ranking (contrary to the size of the confidence ellipse) is:\cr
 #' \code{Beta} > \code{chisq} > \code{T2.1} > \code{T2.2}.
 #' @param print_plot Logical. Default is \code{TRUE}. Determines whether to plot the Hotelling's \eqn{T^2} chart and the SPE chart.
 #'
@@ -203,17 +204,17 @@ PC_num.TW <- function(X, PCA_scale = TRUE,
 #'
 #' # The variance of each variable should not be 0. Otherwise, eliminate them.
 #' zero_var.index <- unique(unlist(lapply(1:B, function(b){
-#'   QC_b <- subset(data, data$batch == batch.level[b] & data$type == 'qc')
+#'   QC_b <- subset(data, data$batch == batch.level[b] & data$type == "qc")
 #'   return(which(apply(QC_b[, -1:-4], 2, var) == 0))
 #' })))
 #'
 #' if (length(zero_var.index) > 1){
-#'   data <- data[, -(4+zero_var.index)]
+#'   data <- data[, -(4 + zero_var.index)]
 #' }
 #'
 #' # Outlier detection for QC samples batchwise.
 #' outlier_result <- lapply(1:B, function(b){
-#'   QC_b <- subset(data, data$batch == batch.level[b] & data$type == 'qc')
+#'   QC_b <- subset(data, data$batch == batch.level[b] & data$type == "qc")
 #'   return(outlier_detection_by_PCA(QC_b, title = batch.level[b]))
 #' })
 #' names(outlier_result) <- batch.level

@@ -2,16 +2,17 @@
 % Please edit documentation in R/D_ratio.R
 \name{compare_D_ratio}
 \alias{compare_D_ratio}
-\title{D-ratio distribution of different corrected data for comparison}
+\title{Dispersion-ratio (D-ratio) distribution of different data for comparison}
 \usage{
 compare_D_ratio(data1, ..., BEC_method, line_alpha = 0.8)
 }
 \arguments{
-\item{data1}{A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}}
+\item{data1}{A dataframe.\cr
+Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.}
 
-\item{...}{Alternatives. For example, \code{data2, data3}.}
+\item{...}{Alternatives. More data (e.g., \code{data2}, \code{data3}) can be input.}
 
-\item{BEC_method}{A character vector. The length must be the same as \code{c(data1, ...)}. For example, \code{c('raw', 'RF', 'XGBoost')}.}
+\item{BEC_method}{A character vector. The length must be the same as \code{c(data1, ...)}. For example, \code{c("raw", "RF", "XGBoost")}.}
 
 \item{line_alpha}{A numeric scalar. Default is 0.8. Determines the curve line opacity in the cumulative distribution plot.}
 }
@@ -19,7 +20,7 @@ compare_D_ratio(data1, ..., BEC_method, line_alpha = 0.8)
 A cumulative distribution plot.
 }
 \description{
-Dispersion-ratio (D-ratio). The metric examines both QC samples and subject samples, whose formula is:\cr
+The metric examines both QC samples and subject samples, whose formula is:\cr
 \deqn{\mathrm{D\text{-}ratio}_{i}=\sqrt{\frac{\mathrm{Var}(y^{\mathrm{(QC)}}_{i})}{\mathrm{Var}(y^{\mathrm{(QC)}}_{i}) + \mathrm{Var}(y^{\mathrm{(ss)}}_{i})}},i=1,2,...,p,}\cr
 where \eqn{y^{\mathrm{(QC)}}_{i}} denotes the intensity of QC samples' \eqn{i}th metabolite;\cr
 \eqn{y^{\mathrm{(ss)}}_{i}} denotes the intensity of subject samples' \eqn{i}th metabolite;\cr
@@ -34,7 +35,7 @@ where \eqn{y^{\mathrm{(QC)}}_{i}} denotes the intensity of QC samples' \eqn{i}th
 data(Dataset_I)
 data <- Dataset_I
 data.RF <- RF.correction(data)
-compare_D_ratio(data, data.RF, BEC_method = c('raw', 'RF'))
+compare_D_ratio(data, data.RF, BEC_method = c("raw", "RF"))
 }
 \references{
 \itemize{

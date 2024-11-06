@@ -1,7 +1,7 @@
 #' @title QC-based BEC algorithm: Covariance Correction (CoCo)
 #'
-#' @description CoCo is used for inter-BEC, which employs the GELNET (Graphical Elastic Net) algorithm of the GGM (Gaussian Graphical Model).\cr
-#' For the multivariate normal distribution \eqn{\mathrm{N}_{p}(\boldsymbol{\mu},\boldsymbol{\Sigma})}, the penalized MLE (Maximum Likelihood Estimator) of the precision matrix (inverse covariance matrix, namely \eqn{\boldsymbol{\Theta}=\boldsymbol{\Sigma}^{-1}}) by GELNET is:\cr
+#' @description CoCo is used for inter-BEC, which employs the Graphical Elastic Net (GELNET) algorithm of the Gaussian Graphical Model (GGM).\cr
+#' For the multivariate normal distribution \eqn{\mathrm{N}_{p}(\boldsymbol{\mu},\boldsymbol{\Sigma})}, the penalized Maximum Likelihood Estimator (MLE) of the precision matrix (inverse covariance matrix, namely \eqn{\boldsymbol{\Theta}=\boldsymbol{\Sigma}^{-1}}) by GELNET is:\cr
 #' \deqn{\hat{\boldsymbol{\Theta}} = \arg\min_{\boldsymbol{\Theta}}\{-\mathrm{log}|\boldsymbol{\Theta}| + \mathrm{tr}(\boldsymbol{S}\boldsymbol{\Theta}) + \lambda(\alpha\|\boldsymbol{\Theta}-\boldsymbol{T}\|_{1} + \frac{1-\alpha}{2}\|\boldsymbol{\Theta}-\boldsymbol{T}\|^2_{2})\},}
 #' where \eqn{\boldsymbol{S}} denotes the MLE of \eqn{\boldsymbol{\Sigma}};\cr
 #' \eqn{\|.\|_{1}} denotes the matrix \eqn{L_{1}}-norm;\cr
@@ -10,9 +10,10 @@
 #' the hyperparameter \eqn{\lambda \in (0,+\infty)};\cr
 #' \eqn{\boldsymbol{T}} denotes the target matrix, which is a positive semi-definite matrix. Here, we select \eqn{\boldsymbol{T}=\boldsymbol{I}_{p}} (see \strong{Note} for details).
 #'
-#' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
-#' @param alpha_range A two-length numeric vector. Default is \code{c(0, 1)}. If the two values is the same, it means that \eqn{\alpha} is a fixed value.
-#' @param lambda_range A two-length numeric vector. Default is \code{c(0, 10)}. If the two values is the same, it means that \eqn{\lambda} is a fixed value.
+#' @param data A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
+#' @param alpha_range A two-length numeric vector. Default is \code{c(0, 1)}. If the two values are the same, \eqn{\alpha} will be a fixed value.
+#' @param lambda_range A two-length numeric vector. Default is \code{c(0, 10)}. If the two values are the same, \eqn{\lambda} will be a fixed value.
 #' @param search_iterations A numeric scalar. Default is 500. Applied to random search for hyperparameter optimization.
 #' @param random_seed A numeric scalar. Default is 123. Applied to random search for hyperparameter optimization.
 #' @param continue Logical. Default is \code{FALSE}. Determines whether to implement CoCo when \code{QC_ST(data)} has indicated no significant batch effects across different batches.
@@ -32,11 +33,11 @@
 #' @import stats parallel GLassoElnetFast
 #' @importFrom expm sqrtm
 #'
-#' @details See our paper for the correction principle.
+#' @details See our paper for details.
 #'
 #' @note
 #' \itemize{
-#'  \item{GELNET is a sophisticated algorithm, which combines Graphical Lasso (equivalent to \eqn{\alpha=1}) and Graphical Ridge (equivalent to \eqn{\alpha=0}). When \eqn{\lambda \to 0}, \eqn{\hat{\boldsymbol{\Theta}} \to \boldsymbol{S}^{-1}}; When \eqn{\lambda \to +\infty}, \eqn{\hat{\boldsymbol{\Theta}} \to \boldsymbol{T}}.}
+#'  \item{GELNET is a sophisticated algorithm, which combines the Graphical Lasso (equivalent to \eqn{\alpha=1}) and the Graphical Ridge (equivalent to \eqn{\alpha=0}). When \eqn{\lambda \to 0}, \eqn{\hat{\boldsymbol{\Theta}} \to \boldsymbol{S}^{-1}}; When \eqn{\lambda \to +\infty}, \eqn{\hat{\boldsymbol{\Theta}} \to \boldsymbol{T}}.}
 #'  \item{Several references have indicated that \eqn{\boldsymbol{T}=\boldsymbol{I}_{p}} performs well for most of the time. Additionally, \eqn{\boldsymbol{T}=\boldsymbol{I}_{p}} has an another advantage in CoCo (see the next note) comparing to other alternatives.}
 #'  \item{If \code{QC_ST(data)} has indicated no significant batch effects across different batches, CoCo is no longer necessary. This is because redundant CoCo might be time-consuming, considering that the algorithm complexity is \eqn{O(Bp^3)}. Further, hyperparameter optimization of CoCo will obtain larger \eqn{\lambda} batchwise, such that \eqn{\hat{\boldsymbol{\Theta}} \approx \boldsymbol{T} = \boldsymbol{I}_{p}} and the transformation matrix \eqn{\boldsymbol{A} \approx \boldsymbol{I}_{p}} batchwise, which means that \code{data} and \code{CoCo(data)$corrected_data} will be almost the same, namely \eqn{\mathrm{mean}(\boldsymbol{V}) \approx 1}.}
 #' }
@@ -49,21 +50,14 @@
 #' }
 #' @seealso \code{\link{QC_ST}}, \code{GLassoElnetFast::\link[GLassoElnetFast]{gelnet}}.
 #' @examples
-#' \donttest{
 #' data(Dataset_I)
 #' data <- Dataset_I
 #' data.RF <- RF.correction(data)
 #' data.RF.QC_ST <- QC_ST(data.RF)
 #'
-#' ## Note that GELNET is from GitHub.
-#' # if (require("GLassoElnetFast", quietly = TRUE) == FALSE){
-#' #   remotes::install_github("TobiasRuckstuhl/GLassoElnetFast")
-#' # }
-#'
 #' RF_CoCo <- CoCo(data.RF)
 #' data.RF_CoCo <- RF_CoCo$corrected_data
 #' data.RF_CoCo.QC_ST <- QC_ST(data.RF_CoCo)
-#' }
 
 CoCo <- function(data,
                  alpha_range = c(0, 1), # Kovacs (2021)与Bernardini (2022)选取alpha = 0.5

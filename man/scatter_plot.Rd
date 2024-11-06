@@ -2,7 +2,7 @@
 % Please edit documentation in R/scatter_plot.R
 \name{scatter_plot}
 \alias{scatter_plot}
-\title{Scatter plot of data}
+\title{Scatter plot}
 \usage{
 scatter_plot(
   data,
@@ -17,7 +17,8 @@ scatter_plot(
 )
 }
 \arguments{
-\item{data}{A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}}
+\item{data}{A dataframe.\cr
+Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.}
 
 \item{variable_index}{A numeric scalar.}
 
@@ -39,13 +40,13 @@ scatter_plot(
 A scatter plot.
 }
 \description{
-A scatter plot of \code{data}.
+A scatter plot for univariate visualization.
 }
 \examples{
 data(Dataset_I)
 data <- Dataset_I
 scatter_plot(data, variable_index = 107, y.log10_trans = TRUE,
-y.lim = TRUE, y_min = 10^3, y_max = 10^5)
+             y.lim = TRUE, y_min = 10^3, y_max = 10^5)
 }
 \seealso{
 \code{\link{compare_scatter_plot}}.

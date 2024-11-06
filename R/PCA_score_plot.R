@@ -1,8 +1,9 @@
-#' @title PCA plot of data
+#' @title Principal Component Analysis (PCA) score plot
 #'
-#' @description Principal Component Analysis (PCA).
+#' @description A two-dimensional PCA score plot for multivariate visualization.
 #'
-#' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
+#' @param data A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
 #' @param sample_type \code{all} denotes all the samples; \code{qc} denotes QC samples; \code{sample} denotes subject samples.
 #' @param PCi A numeric scalar. Default is 1. The \eqn{i}th principal component of PCA.
 #' @param PCj A numeric scalar. Default is 2. The \eqn{j}th principal component of PCA.
@@ -24,7 +25,7 @@
 #' @examples
 #' data(Dataset_I)
 #' data <- Dataset_I
-#' PCA_plot(data, sample_type = 'qc')
+#' PCA_plot(data, sample_type = "qc")
 
 PCA_plot <- function(data, sample_type = c("all", "qc", "sample"),
                      PCi = 1, PCj = 2, PCA_scale = TRUE,
@@ -91,13 +92,14 @@ PCA_plot <- function(data, sample_type = c("all", "qc", "sample"),
 }
 
 
-#' @title PCA plot of different corrected data for comparison
+#' @title Principal Component Analysis (PCA) score plot of different data for comparison
 #'
-#' @description Principal Component Analysis (PCA).
+#' @description A two-dimensional PCA score plot for multivariate visualization.
 #'
-#' @param data1 A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
-#' @param ... Alternatives. For example, \code{data2, data3}.
-#' @param BEC_method A character vector. The length must be the same as \code{c(data1, ...)}. For example, \code{c('raw', 'RF', 'XGBoost')}.
+#' @param data1 A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
+#' @param ... Alternatives. More data (e.g., \code{data2}, \code{data3}) can be input.
+#' @param BEC_method A character vector. The length must be the same as \code{c(data1, ...)}. For example, \code{c("raw", "RF", "XGBoost")}.
 #' @param batch_index A numeric scalar.
 #' @param sample_type \code{all} denotes all the samples; \code{qc} denotes QC samples; \code{sample} denotes subject samples.
 #' @param PCi A numeric scalar. Default is 1. The \eqn{i}th principal component of PCA.
@@ -121,7 +123,8 @@ PCA_plot <- function(data, sample_type = c("all", "qc", "sample"),
 #' data(Dataset_I)
 #' data <- Dataset_I
 #' data.RF <- RF.correction(data)
-#' compare_PCA_plot(data, data.RF, BEC_method = c('raw', 'RF'), batch_index = 2, sample_type = 'qc')
+#' compare_PCA_plot(data, data.RF, BEC_method = c("raw", "RF"),
+#'                  batch_index = 2, sample_type = "qc")
 
 compare_PCA_plot <- function(data1, ...,
                              BEC_method, batch_index,

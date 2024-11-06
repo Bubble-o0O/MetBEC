@@ -8,9 +8,10 @@
 #' \eqn{\boldsymbol{\theta}} denotes the optimal hyperparameters;\cr
 #' \eqn{p} denotes the variable (metabolite) number.
 #'
-#' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
-#' @param batch_ratio Default is \code{ratio-A} when the batch number \eqn{B>1}, otherwise default is \code{NULL} when \eqn{B=1}. Noted that if \code{batch_ratio = NULL}, only intra-BEC will be implemented.
-#' @param cor_variable_num Default is \code{NULL}, which equals to 10 when the variable number \eqn{p>10} or else equals to \eqn{p-1}. Otherwise, it should be a numeric scalar. The hyperparameter usually has slight influence on correction.
+#' @param data A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
+#' @param batch_ratio Default is \code{ratio-A} when the batch number \eqn{B>1}, or else is \code{NULL} when \eqn{B=1}.
+#' @param cor_variable_num Default is \code{NULL}, which equals 10 when the variable number \eqn{p>10} or else equals \eqn{p-1}. Otherwise, it should be a numeric scalar. The hyperparameter usually has slight influence on correction.
 #' @param nrounds A numeric scalar or vector. Default is 50.
 #' @param eta A numeric scalar or vector. Default is \code{c(0.05, 0.1)}.
 #' @param gamma A numeric scalar or vector. Default is 1. The hyperparameter usually has slight influence on correction.
@@ -28,8 +29,8 @@
 #' @note
 #' \itemize{
 #'  \item{XGBoost has more hyperparameters when establishing the regression model, such that it is more sophisticated and powerful to handle different scales of datasets.}
-#'  \item{5-fold-cross-validation (CV) is used for hyperparameter optimization.}
-#'  \item{When \code{batch_ratio = ratio-A} or \code{mean}, batch-ratio can ensure the consistency among QC samples' mean vectors across different batches after correction.}
+#'  \item{5-fold-cross-validation is used for hyperparameter optimization.}
+#'  \item{If \code{batch_ratio = NULL}, only intra-BEC will be implemented. If \code{batch_ratio = ratio-A} or \code{mean}, it can ensure the consistency among QC samples' mean vectors across different batches after correction.}
 #' }
 #' @author Zhendong Guo (\email{guozhendong19@mails.ucas.ac.cn}).
 #' @references

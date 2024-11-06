@@ -2,12 +2,13 @@
 % Please edit documentation in R/D_ratio.R
 \name{D_ratio}
 \alias{D_ratio}
-\title{D-ratio distribution of data}
+\title{Dispersion-ratio (D-ratio) distribution}
 \usage{
 D_ratio(data, print_plot = TRUE, D_ratio_value = FALSE)
 }
 \arguments{
-\item{data}{A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}}
+\item{data}{A dataframe.\cr
+Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.}
 
 \item{print_plot}{Logical. Default is \code{TRUE}. Determines whether to plot the histogram and the cumulative distribution plot.}
 
@@ -20,7 +21,7 @@ D_ratio(data, print_plot = TRUE, D_ratio_value = FALSE)
 \item{cumulative distribution plot}{Plotted only when \code{print_plot = TRUE}.}
 }
 \description{
-Dispersion-ratio (D-ratio). The metric examines both QC samples and subject samples, whose formula is:\cr
+The metric examines both QC samples and subject samples, whose formula is:\cr
 \deqn{\mathrm{D\text{-}ratio}_{i}=\sqrt{\frac{\mathrm{Var}(y^{\mathrm{(QC)}}_{i})}{\mathrm{Var}(y^{\mathrm{(QC)}}_{i}) + \mathrm{Var}(y^{\mathrm{(ss)}}_{i})}},i=1,2,...,p,}\cr
 where \eqn{y^{\mathrm{(QC)}}_{i}} denotes the intensity of QC samples' \eqn{i}th metabolite;\cr
 \eqn{y^{\mathrm{(ss)}}_{i}} denotes the intensity of subject samples' \eqn{i}th metabolite;\cr

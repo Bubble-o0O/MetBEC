@@ -1,12 +1,13 @@
-#' @title D-ratio distribution of data
+#' @title Dispersion-ratio (D-ratio) distribution
 #'
-#' @description Dispersion-ratio (D-ratio). The metric examines both QC samples and subject samples, whose formula is:\cr
+#' @description The metric examines both QC samples and subject samples, whose formula is:\cr
 #' \deqn{\mathrm{D\text{-}ratio}_{i}=\sqrt{\frac{\mathrm{Var}(y^{\mathrm{(QC)}}_{i})}{\mathrm{Var}(y^{\mathrm{(QC)}}_{i}) + \mathrm{Var}(y^{\mathrm{(ss)}}_{i})}},i=1,2,...,p,}\cr
 #' where \eqn{y^{\mathrm{(QC)}}_{i}} denotes the intensity of QC samples' \eqn{i}th metabolite;\cr
 #' \eqn{y^{\mathrm{(ss)}}_{i}} denotes the intensity of subject samples' \eqn{i}th metabolite;\cr
 #' \eqn{p} denotes the variable (metabolite) number.
 #'
-#' @param data A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
+#' @param data A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
 #' @param print_plot Logical. Default is \code{TRUE}. Determines whether to plot the histogram and the cumulative distribution plot.
 #' @param D_ratio_value Logical. Default is \code{FALSE}. Determines whether to output the D-ratio values.
 #'
@@ -87,17 +88,18 @@ D_ratio <- function(data, print_plot = TRUE, D_ratio_value = FALSE){
   }
 }
 
-#' @title D-ratio distribution of different corrected data for comparison
+#' @title Dispersion-ratio (D-ratio) distribution of different data for comparison
 #'
-#' @description Dispersion-ratio (D-ratio). The metric examines both QC samples and subject samples, whose formula is:\cr
+#' @description The metric examines both QC samples and subject samples, whose formula is:\cr
 #' \deqn{\mathrm{D\text{-}ratio}_{i}=\sqrt{\frac{\mathrm{Var}(y^{\mathrm{(QC)}}_{i})}{\mathrm{Var}(y^{\mathrm{(QC)}}_{i}) + \mathrm{Var}(y^{\mathrm{(ss)}}_{i})}},i=1,2,...,p,}\cr
 #' where \eqn{y^{\mathrm{(QC)}}_{i}} denotes the intensity of QC samples' \eqn{i}th metabolite;\cr
 #' \eqn{y^{\mathrm{(ss)}}_{i}} denotes the intensity of subject samples' \eqn{i}th metabolite;\cr
 #' \eqn{p} denotes the variable (metabolite) number.
 #'
-#' @param data1 A dataframe. \strong{Use \code{data(Dataset_I)} for formats.}
-#' @param ... Alternatives. For example, \code{data2, data3}.
-#' @param BEC_method A character vector. The length must be the same as \code{c(data1, ...)}. For example, \code{c('raw', 'RF', 'XGBoost')}.
+#' @param data1 A dataframe.\cr
+#' Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.
+#' @param ... Alternatives. More data (e.g., \code{data2}, \code{data3}) can be input.
+#' @param BEC_method A character vector. The length must be the same as \code{c(data1, ...)}. For example, \code{c("raw", "RF", "XGBoost")}.
 #' @param line_alpha A numeric scalar. Default is 0.8. Determines the curve line opacity in the cumulative distribution plot.
 #'
 #' @return A cumulative distribution plot.
@@ -120,7 +122,7 @@ D_ratio <- function(data, print_plot = TRUE, D_ratio_value = FALSE){
 #' data(Dataset_I)
 #' data <- Dataset_I
 #' data.RF <- RF.correction(data)
-#' compare_D_ratio(data, data.RF, BEC_method = c('raw', 'RF'))
+#' compare_D_ratio(data, data.RF, BEC_method = c("raw", "RF"))
 
 compare_D_ratio <- function(data1, ..., BEC_method, line_alpha = 0.8){
   data <- list(data1, ...)
