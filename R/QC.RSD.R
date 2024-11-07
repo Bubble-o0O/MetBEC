@@ -79,7 +79,7 @@ QC.RSD <- function(data, print_plot = TRUE, RSD_value = FALSE){
     # 绘制累积分布图
     cdf <- ggplot2::ggplot(data.frame(RSD), aes(x = RSD)) +
       stat_ecdf(geom = "step", color = "black") +
-      labs(title = "QC samples's RSD distribution", x = "RSD (%)", y = "Cumulative frequency (%)") +
+      labs(title = "QC samples' RSD distribution", x = "RSD (%)", y = "Cumulative frequency (%)") +
       geom_vline(xintercept = c(0.15, 0.2, 0.3), linetype = "dashed", color = "black", linewidth = 0.4) +
       scale_x_continuous(breaks = seq(0, 1, by = 0.1), limits = c(0, 1),
                          labels = scales::label_number(scale = 100)) +
@@ -162,7 +162,7 @@ compare_QC.RSD <- function(data1, ..., BEC_method, line_alpha = 0.8){
   # 绘制每列数据的cdf曲线
   ggplot2::ggplot(RSD, aes(x = RSD, color = Method)) +
     stat_ecdf(geom = "step", alpha = line_alpha) +
-    labs(title = "QC samples's RSD distribution", x = "RSD (%)", y = "Cumulative frequency (%)") +
+    labs(title = "QC samples' RSD distribution", x = "RSD (%)", y = "Cumulative frequency (%)") +
     geom_vline(xintercept = c(0.15, 0.2, 0.3), linetype = "dashed", color = "black", linewidth = 0.4) +
     scale_x_continuous(breaks = seq(0, 1, by = 0.1), limits = c(0, 1),
                        labels = scales::label_number(scale = 100)) +
