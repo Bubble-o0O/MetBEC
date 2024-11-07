@@ -9,10 +9,11 @@ Batch effects are inevitable in large-scale metabolomics. Prior to data analysis
   - batch-ratio
   - **Covariance Correction (CoCo)**
 - Metrics for correction assessment:
-  - Principal Component Analysis (PCA)
   - Relative Standard Deviation (RSD)
   - Dispersion-ratio (D-ratio)
   - **QC-based simultaneous tests (QC-ST)**
+  - Principal Component Analysis (PCA) score plot for multivariate visualization
+  - scatter plot for univariate visualization
 - Data pre-processing
   - outlier detection by PCA with Hotelling's $$T^2$$ statistic and Squared Prediction Errors (SPEs) 
 ## Install
