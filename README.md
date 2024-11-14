@@ -3,7 +3,7 @@
 # Contact
 E-mail to <guozhendong19@mails.ucas.ac.cn> for any questions (**preferably in Chinese**).
 # References
-- A New Statistical Method for Evaluating Batch Effects and the Matching Quality Control-Based Batch Effect Correction Strategy Samples in Metabolomics. *Submitting*.
+- A New Statistical Method for Evaluating Batch Effects and the Matching Quality Control-Based Batch Effect Correction Strategy in Metabolomics. *Submitting*.
 ## Description
 Batch effects are inevitable in large-scale metabolomics. Prior to formal data analysis, BEC is applied to prevent from obscuring biological variations. Here, we provide six QC-based BEC algorithms and several relevant functions.
 - Intra-BEC methods:
