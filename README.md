@@ -5,7 +5,7 @@ E-mail to <guozhendong19@mails.ucas.ac.cn> for any questions (**preferably in Ch
 # References
 - A New Statistical Method for Evaluating Batch Effects and the Matching Batch Effect Correction Strategy Based on Quality Control Samples in Metabolomics. *Submitting*.
 ## Description
-Batch effects are inevitable in large-scale metabolomics. Prior to data analysis, BEC is imperative to prevent from obscuring biological variations. Here, we provide six QC-based BEC algorithms and several relevant functions.
+Batch effects are inevitable in large-scale metabolomics. Prior to formal data analysis, BEC is applied to prevent from obscuring biological variations. Here, we provide six QC-based BEC algorithms and several relevant functions.
 - Intra-BEC methods:
   - Support Vector Regression (SVR)
   - Random Forest (RF) regression
@@ -45,7 +45,7 @@ Please read **Help** of the required function in *R Studio*.
 - Select the required function in **Help Pages**.
 ## Supplements
 执行**Install**时如报错，请参考以下解决方案：
-- 如有必要，安装RBuildTools（[pkgbuild](https://cran.r-project.org/web/packages/pkgbuild/index.html)）
+- 如有必要，安装*RBuildTools* ([pkgbuild](https://cran.r-project.org/web/packages/pkgbuild/index.html))
 ```R
 if (require("pkgbuild", quietly = TRUE) == FALSE){
   install.packages("pkgbuild")
@@ -55,8 +55,8 @@ if (require("pkgbuild", quietly = TRUE) == FALSE){
 - **高级 - 环境变量**
 - **系统变量 - Path - 编辑**
 - **浏览 - C:\RBuildTools\4.3\mingw64\bin**
-  - **RBuildTools**文件夹的地址请自行更改
-  - R与RBuildTools的版本应相同
+  - *RBuildTools*的地址请自行更改
+  - *R*与*RBuildTools*的版本应相同
   - 地址中不建议出现中文字符
 - **确定 - 确定 - 确定**
 - 重启*R Studio*，再执行**Install**的相关代码
