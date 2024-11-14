@@ -59,6 +59,13 @@ batch_ratio.correction <- function(data,
     QC_b <- subset(QC, QC$batch == batch.level[b])
     QC_b.Data <- QC_b[, -1:-4]
 
+    QC_b.var <- apply(QC_b.Data, 2, var)
+    if (any(QC_b.var < 1e-6) == TRUE){
+      var_zero <- colnames(QC_b.Data)[which(QC_b.var < 1e-6)]
+      warning(sprintf("For QC samples in Batch %s, %d variables' variances are 0 (or close to 0), including: %s.",
+                      batch.level[b], length(var_zero), paste(var_zero, collapse = ", ")))
+    }
+
     Data_b.scale <- sapply(1:p, function(j) { # 获取校正因子（向量形式）
       if (method == 'ratio-A'){
         median(QC.Data[, j]) / mean(QC_b.Data[, j])

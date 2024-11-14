@@ -202,17 +202,17 @@ PC_num.TW <- function(X, PCA_scale = TRUE,
 #' batch.level <- unique(data$batch)
 #' B <- length(batch.level)
 #'
-#' # The variance of each variable should not be 0. Otherwise, eliminate them.
-#' zero_var.index <- unique(unlist(lapply(1:B, function(b){
+#' # The variance of each variable in each batch should not be 0. Otherwise, eliminate them.
+#' var_zero <- unique(unlist(lapply(1:B, function(b){
 #'   QC_b <- subset(data, data$batch == batch.level[b] & data$type == "qc")
-#'   return(which(apply(QC_b[, -1:-4], 2, var) == 0))
+#'   return(which(apply(QC_b[, -1:-4], 2, var) < 1e-6))
 #' })))
 #'
-#' if (length(zero_var.index) > 1){
-#'   data <- data[, -(4 + zero_var.index)]
+#' if (length(var_zero) > 0){
+#'   data <- data[, -(4 + var_zero)]
 #' }
 #'
-#' # Outlier detection for QC samples batchwise.
+#' # Detect QC samples' outliers batchwise.
 #' outlier_result <- lapply(1:B, function(b){
 #'   QC_b <- subset(data, data$batch == batch.level[b] & data$type == "qc")
 #'   return(outlier_detection_by_PCA(QC_b, title = batch.level[b]))

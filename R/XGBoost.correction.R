@@ -3,8 +3,8 @@
 #' @description Briefly, the intra-BEC principle employs the regression model based on QC samples batchwise, namely:\cr
 #' \deqn{y_{i}\sim f(x,\boldsymbol{y}_{(i)}\mid \boldsymbol{\theta}),i=1,2,…,p,}\cr
 #' where \eqn{y_{i}} denotes the intensity of the \eqn{i}th metabolite;\cr
-#' \eqn{x} denotes the injection order of the corresponding batch;\cr
-#' \eqn{\boldsymbol{y}_{(i)}} denotes the several (i.e., \code{cor_variable_num}) variables with the highest correlations to \eqn{y_{i}};\cr
+#' \eqn{x} denotes the injection order;\cr
+#' \eqn{\boldsymbol{y}_{(i)}} denotes the several (i.e., \code{cor_variable_num}) variables with the highest correlations to the \eqn{i}th variable;\cr
 #' \eqn{\boldsymbol{\theta}} denotes the optimal hyperparameters;\cr
 #' \eqn{p} denotes the variable (metabolite) number.
 #'
@@ -36,7 +36,7 @@
 #' @references
 #' \itemize{
 #'  \item{Chen, T.; Guestrin, C.; Machinery, A. C. XGBoost: A Scalable Tree Boosting System. In \emph{KDD'16: Proceedings of the 22Nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}, 2016; pp 785-794. DOI: 10.1145/2939672.2939785.}
-#'  \item{Bentéjac, C.; Csrg, A.; Martínez-Muoz, G. A Comparative Analysis of XGBoost. \emph{Arxiv} \strong{2019}. DOI: arXiv:1911.01914.}
+#'  \item{Bentéjac, C.; Csrg, A.; Martínez-Muoz, G. A Comparative Analysis of XGBoost. \emph{arXiv} \strong{2019}. DOI: arXiv:1911.01914.}
 #' }
 #' @seealso \code{\link{batch_ratio.correction}}, \code{caret::\link[caret]{train}}, \code{xgboost::xgboost}.
 #' @examples
@@ -129,9 +129,11 @@ XGBoost.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 
     QC.order_b <- QC_b.data$order
     QC_b.Data <- QC_b.data[, -1:-4]
 
-    if (any(apply(QC_b.Data, 2, var) == 0) == TRUE){
-      stop(sprintf("QC samples' some variances in Batch %s are 0.",
-                   batch.level[b]))
+    QC_b.var <- apply(QC_b.Data, 2, var)
+    if (any(QC_b.var < 1e-6) == TRUE){
+      var_zero <- colnames(QC_b.Data)[which(QC_b.var < 1e-6)]
+      stop(sprintf("For QC samples in Batch %s, %d variables' variances are 0 (or close to 0), including: %s.",
+                   batch.level[b], length(var_zero), paste(var_zero, collapse = ", ")))
     }
 
     # 备注：XGBoost模型不需要对数据进行标准化

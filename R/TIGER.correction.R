@@ -82,9 +82,11 @@ TIGER.correction <- function(data, batch_ratio = c(NULL, 'ratio-A', 'median', 'm
     QC_b.data <- subset(QC, QC$batch == batch.level[b])
     QC_b.Data <- QC_b.data[, -1:-4]
 
-    if (any(apply(QC_b.Data, 2, var) == 0) == TRUE){
-      stop(sprintf("QC samples' some variances in Batch %s are 0.",
-                   batch.level[b]))
+    QC_b.var <- apply(QC_b.Data, 2, var)
+    if (any(QC_b.var < 1e-6) == TRUE){
+      var_zero <- colnames(QC_b.Data)[which(QC_b.var < 1e-6)]
+      stop(sprintf("For QC samples in Batch %s, %d variables' variances are 0 (or close to 0), including: %s.",
+                   batch.level[b], length(var_zero), paste(var_zero, collapse = ", ")))
     }
   }
 

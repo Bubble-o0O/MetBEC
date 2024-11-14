@@ -42,8 +42,8 @@ Execute \code{data(Dataset_I)} and \code{View(Dataset_I)} for formats.}
 \item{cl}{Default is \code{NULL}, which uses all the CPU cores for parallel computing. Otherwise, it should be a numeric scalar.}
 }
 \value{
-\item{hyperparameters}{A dataframe. The optimal hyperparameters batchwise.}
-\item{VarFC_matrix}{A dataframe. The variance fold changes of each variable batchwise before and after CoCo. Denoted as \eqn{\boldsymbol{V}}.}
+\item{hyperparameters}{A dataframe. The optimal hyperparameters.}
+\item{VarFC_matrix}{A dataframe. The subject samples' variance fold changes before and after CoCo. Denoted as \eqn{\boldsymbol{V}}.}
 \item{VarFC.all_mean}{A numeric scalar. The mean value of \code{VarFC_matrix}, namely \eqn{\mathrm{mean}(\boldsymbol{V})}, which determines whether the subject samples are overcorrected. We provide an acceptance range as reference: \eqn{(0.25,4)}.}
 \item{corrected_data}{A dataframe. The format is the same as \code{data}.}
 }
@@ -65,7 +65,7 @@ See our paper for details.
 \itemize{
  \item{GELNET is a sophisticated algorithm, which combines the Graphical Lasso (equivalent to \eqn{\alpha=1}) and the Graphical Ridge (equivalent to \eqn{\alpha=0}). When \eqn{\lambda \to 0}, \eqn{\hat{\boldsymbol{\Theta}} \to \boldsymbol{S}^{-1}}; When \eqn{\lambda \to +\infty}, \eqn{\hat{\boldsymbol{\Theta}} \to \boldsymbol{T}}.}
  \item{Several references have indicated that \eqn{\boldsymbol{T}=\boldsymbol{I}_{p}} performs well for most of the time. Additionally, \eqn{\boldsymbol{T}=\boldsymbol{I}_{p}} has an another advantage in CoCo (see the next note) comparing to other alternatives.}
- \item{If \code{QC_ST(data)} has indicated no significant batch effects across different batches, CoCo is no longer necessary. This is because redundant CoCo might be time-consuming, considering that the algorithm complexity is \eqn{O(Bp^3)}. Further, hyperparameter optimization of CoCo will obtain larger \eqn{\lambda} batchwise, such that \eqn{\hat{\boldsymbol{\Theta}} \approx \boldsymbol{T} = \boldsymbol{I}_{p}} and the transformation matrix \eqn{\boldsymbol{A} \approx \boldsymbol{I}_{p}} batchwise, which means that \code{data} and \code{CoCo(data)$corrected_data} will be almost the same, namely \eqn{\mathrm{mean}(\boldsymbol{V}) \approx 1}.}
+ \item{If \code{QC_ST(data)} has indicated no significant batch effects across different batches, CoCo is no longer necessary. This is because redundant CoCo might be time-consuming, considering that the algorithm complexity is \eqn{O(Bp^3)}. Further, hyperparameter optimization of CoCo will obtain larger \eqn{\lambda}, which means that \code{data} and \code{CoCo(data)$corrected_data} will be almost the same, namely \eqn{\mathrm{mean}(\boldsymbol{V}) \approx 1}.}
 }
 }
 \examples{
@@ -80,9 +80,9 @@ data.RF_CoCo.QC_ST <- QC_ST(data.RF_CoCo)
 }
 \references{
 \itemize{
- \item{Kovács, S.; Ruckstuhl, T.; Obrist, H.; Bühlmann, P. Graphical Elastic Net and Target Matrices: Fast Algorithms and Software for Sparse Precision Matrix Estimation. \emph{Arxiv} \strong{2021}. DOI: arXiv:2101.02148.}
+ \item{Kovács, S.; Ruckstuhl, T.; Obrist, H.; Bühlmann, P. Graphical Elastic Net and Target Matrices: Fast Algorithms and Software for Sparse Precision Matrix Estimation. \emph{arXiv} \strong{2021}. DOI: arXiv:2101.02148.}
  \item{Kheyri, A.; Bekker, A.; Arashi, M. High-Dimensional Precision Matrix Estimation through GSOS with Application in the Foreign Exchange Market. \emph{Mathematics} \strong{2022}, 10 (22). DOI: 10.3390/math10224232.}
- \item{Bekker, A.; Kheyri, A.; Arashi, M. A Computational Note on the Graphical Ridge in High-dimension. \emph{Arxiv} \strong{2023}. DOI: arXiv:2312.15781.}
+ \item{Bekker, A.; Kheyri, A.; Arashi, M. A Computational Note on the Graphical Ridge in High-dimension. \emph{arXiv} \strong{2023}. DOI: arXiv:2312.15781.}
 }
 }
 \seealso{

@@ -37,8 +37,8 @@ A dataframe. The corrected data, whose format is the same as \code{data}.
 Briefly, the intra-BEC principle employs the regression model based on QC samples batchwise, namely:\cr
 \deqn{y_{i}\sim f(x,\boldsymbol{y}_{(i)}\mid \boldsymbol{\theta}),i=1,2,…,p,}\cr
 where \eqn{y_{i}} denotes the intensity of the \eqn{i}th metabolite;\cr
-\eqn{x} denotes the injection order of the corresponding batch;\cr
-\eqn{\boldsymbol{y}_{(i)}} denotes the several (i.e., \code{cor_variable_num}) variables with the highest correlations to \eqn{y_{i}};\cr
+\eqn{x} denotes the injection order;\cr
+\eqn{\boldsymbol{y}_{(i)}} denotes the several (i.e., \code{cor_variable_num}) variables with the highest correlations to the \eqn{i}th variable;\cr
 \eqn{\boldsymbol{\theta}} denotes the optimal hyperparameters;\cr
 \eqn{p} denotes the variable (metabolite) number.
 }
