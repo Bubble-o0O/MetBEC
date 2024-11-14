@@ -4,7 +4,7 @@ Title: Quality Control (QC)-based Batch Effect Correction (BEC) in Metabolomics
 Version: 0.1.0
 Authors@R: person(given = 'Zhendong', family = 'Guo', role = c("aut", "cre"), email = "guozhendong19@mails.ucas.ac.cn")
 Description: 
-    Batch effects are inevitable in large-scale metabolomics. Prior to data analysis, BEC is imperative to prevent from obscuring biological variations.
+    Batch effects are inevitable in large-scale metabolomics. Prior to formal data analysis, BEC is applied to prevent from obscuring biological variations.
     Here, we provide six QC-based BEC algorithms (including four intra-BEC methods and two inter-BEC methods) and several relevant functions.
 License: GPL (>= 3)
 Encoding: UTF-8
