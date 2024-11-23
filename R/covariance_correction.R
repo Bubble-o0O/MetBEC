@@ -33,7 +33,10 @@
 #' @import stats parallel GLassoElnetFast
 #' @importFrom expm sqrtm
 #'
-#' @details See our paper for details.
+#' @details Please read my preprint:
+#' \itemize{
+#'  \item{Guo, Z. High-dimensional Statistics Applications to Batch Effects in Metabolomics. \emph{arXiv} \strong{2024}. DOI: arXiv:2412.10196.}
+#' }
 #'
 #' @note
 #' \itemize{

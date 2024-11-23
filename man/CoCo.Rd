@@ -59,7 +59,10 @@ the hyperparameter \eqn{\lambda \in (0,+\infty)};\cr
 \eqn{\boldsymbol{T}} denotes the target matrix, which is a positive semi-definite matrix. Here, we select \eqn{\boldsymbol{T}=\boldsymbol{I}_{p}} (see \strong{Note} for details).
 }
 \details{
-See our paper for details.
+Please read my preprint:
+\itemize{
+ \item{Guo, Z. High-dimensional Statistics Applications to Batch Effects in Metabolomics. \emph{arXiv} \strong{2024}. DOI: arXiv:2412.10196.}
+}
 }
 \note{
 \itemize{
