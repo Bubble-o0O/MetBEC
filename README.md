@@ -42,7 +42,7 @@ to install ***MetBEC***, where `1: All` is recommended to select.
   - Search for ***MetBEC*** in **Packages** and enter.
   - Select the required function in **Help Pages**.
 - Please read my preprint: 
-  - Guo, Z. [High-dimensional Statistics Applications to Batch Effects in Metabolomics](https://arxiv.org/pdf/2412.10196). *arXiv* **2024**. DOI: arXiv:2412.10196.
+  - Guo, Z. High-dimensional Statistics Applications to Batch Effects in Metabolomics. *arXiv* **2024**. DOI: [arXiv:2412.10196](https://arxiv.org/pdf/2412.10196).
 ## Supplements (in Chinese)
 执行**Install**时如报错，请参考以下解决方案：
 - 如有必要，安装RBuildTools ([pkgbuild](https://cran.r-project.org/web/packages/pkgbuild/index.html))
