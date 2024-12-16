@@ -2,8 +2,6 @@
 ***Quality Control (QC)-based Batch Effect Correction (BEC) in Metabolomics***
 # Contact
 E-mail to <guozhendong19@mails.ucas.ac.cn> for any questions (**preferably in Chinese**).
-# References
-- A New Statistical Method for Evaluating Batch Effects and the Matching Quality Control-Based Batch Effect Correction Strategy in Metabolomics. *Submitting*.
 ## Description
 Batch effects are inevitable in large-scale metabolomics. Prior to formal data analysis, BEC is applied to prevent from obscuring biological variations. Here, we provide six QC-based BEC algorithms and several relevant functions.
 - Intra-BEC methods:
@@ -40,9 +38,11 @@ remotes::install_github("Bubble-o0O/MetBEC")
 ```
 to install ***MetBEC***, where `1: All` is recommended to select.
 ## Details
-Please read **Help** of the required function in R Studio.
-- Search for ***MetBEC*** in **Packages** and enter.
-- Select the required function in **Help Pages**.
+- Please read **Help** of the required function in R Studio.
+  - Search for ***MetBEC*** in **Packages** and enter.
+  - Select the required function in **Help Pages**.
+- Please read my preprint: 
+  - Guo, Z. High-dimensional Statistics Applications to Batch Effects in Metabolomics. *arXiv* **2024**. DOI: [arXiv:2412.10196](https://arxiv.org/pdf/2412.10196).
 ## Supplements (in Chinese)
 执行**Install**时如报错，请参考以下解决方案：
 - 如有必要，安装RBuildTools ([pkgbuild](https://cran.r-project.org/web/packages/pkgbuild/index.html))
